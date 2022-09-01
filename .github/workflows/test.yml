@@ -1,0 +1,17 @@
+name: Test
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: macos-12
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Run unit tests
+        run: |
+          set -o pipefail && xcodebuild test -scheme FireworkVideoUI -destination 'platform=iOS Simulator,OS=latest,name=iPhone 11 Pro' -sdk iphonesimulator -enableCodeCoverage YES | \
+            xcpretty --color --report junit --output test-results/unit-tests/results.xml
