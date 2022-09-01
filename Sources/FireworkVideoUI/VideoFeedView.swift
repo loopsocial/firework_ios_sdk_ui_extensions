@@ -1,6 +1,5 @@
 //
 //  VideoFeedView.swift
-//  FireworkVideoDebug
 //
 //  Created by Luke Davis on 8/29/22.
 //
@@ -10,7 +9,7 @@ import FireworkVideo
 
 open class VideoFeedView: UIView {
 
-    private lazy var feedViewController: VideoFeedViewController = VideoFeedViewController(
+    internal lazy var feedViewController: VideoFeedViewController = VideoFeedViewController(
         layout: VideoFeedHorizontalLayout(),
         source: .discover
     )
@@ -27,11 +26,6 @@ open class VideoFeedView: UIView {
 
     private var isControllerAttached: Bool {
         feedViewController.parent != nil && feedViewController.view.superview == self
-    }
-
-    init(frame: CGRect, feedViewController: VideoFeedViewController) {
-        super.init(frame: frame)
-        self.feedViewController = feedViewController
     }
 
     public init(
@@ -167,41 +161,4 @@ open class VideoFeedView: UIView {
         return nil
     }
 
-}
-
-class FeedTableCell: UITableViewCell {
-    var feed: VideoFeedView? {
-        didSet {
-            if oldValue != nil && feed == nil {
-                oldValue?.removeFromSuperview()
-            }
-            updateFeed()
-        }
-    }
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-
-    override func prepareForReuse() {
-        feed = nil
-    }
-
-    private func updateFeed() {
-        guard let feed = feed else {
-            return
-        }
-        contentView.addSubview(feed)
-        feed.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            feed.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            feed.topAnchor.constraint(equalTo: contentView.topAnchor),
-            feed.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            feed.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-        ])
-    }
 }
