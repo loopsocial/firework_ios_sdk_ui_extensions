@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		845BB1C328C162320069E5BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1C228C162320069E5BF /* AppDelegate.swift */; };
 		845BB1C528C162320069E5BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1C428C162320069E5BF /* SceneDelegate.swift */; };
-		845BB1C728C162320069E5BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1C628C162320069E5BF /* ViewController.swift */; };
 		845BB1CA28C162320069E5BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845BB1C828C162320069E5BF /* Main.storyboard */; };
 		845BB1CC28C162340069E5BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845BB1CB28C162340069E5BF /* Assets.xcassets */; };
 		845BB1CF28C162340069E5BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845BB1CD28C162340069E5BF /* LaunchScreen.storyboard */; };
@@ -19,13 +18,15 @@
 		845BB1E228C166200069E5BF /* FeedViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1E128C166200069E5BF /* FeedViewTableViewCell.swift */; };
 		845BB1E428C16C790069E5BF /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1E328C16C790069E5BF /* LabelTableViewCell.swift */; };
 		845BB1E728C16E540069E5BF /* FeedViewCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1E628C16E540069E5BF /* FeedViewCache.swift */; };
+		845BB1E928C17CF40069E5BF /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1E828C17CF40069E5BF /* CollectionViewController.swift */; };
+		845BB1EB28C17D4D0069E5BF /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1EA28C17D4D0069E5BF /* FeedCollectionViewCell.swift */; };
+		845BB1ED28C17D8C0069E5BF /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1EC28C17D8C0069E5BF /* LabelCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		845BB1BF28C162310069E5BF /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		845BB1C228C162320069E5BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		845BB1C428C162320069E5BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		845BB1C628C162320069E5BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		845BB1C928C162320069E5BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		845BB1CB28C162340069E5BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		845BB1CE28C162340069E5BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,6 +36,9 @@
 		845BB1E128C166200069E5BF /* FeedViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewTableViewCell.swift; sourceTree = "<group>"; };
 		845BB1E328C16C790069E5BF /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		845BB1E628C16E540069E5BF /* FeedViewCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewCache.swift; sourceTree = "<group>"; };
+		845BB1E828C17CF40069E5BF /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		845BB1EA28C17D4D0069E5BF /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		845BB1EC28C17D8C0069E5BF /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +80,6 @@
 				845BB1DD28C163380069E5BF /* TableViewExample */,
 				845BB1C228C162320069E5BF /* AppDelegate.swift */,
 				845BB1C428C162320069E5BF /* SceneDelegate.swift */,
-				845BB1C628C162320069E5BF /* ViewController.swift */,
 				845BB1C828C162320069E5BF /* Main.storyboard */,
 				845BB1CB28C162340069E5BF /* Assets.xcassets */,
 				845BB1CD28C162340069E5BF /* LaunchScreen.storyboard */,
@@ -105,6 +108,9 @@
 		845BB1DE28C163400069E5BF /* CollectionViewExample */ = {
 			isa = PBXGroup;
 			children = (
+				845BB1E828C17CF40069E5BF /* CollectionViewController.swift */,
+				845BB1EA28C17D4D0069E5BF /* FeedCollectionViewCell.swift */,
+				845BB1EC28C17D8C0069E5BF /* LabelCollectionViewCell.swift */,
 			);
 			path = CollectionViewExample;
 			sourceTree = "<group>";
@@ -195,11 +201,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				845BB1C728C162320069E5BF /* ViewController.swift in Sources */,
 				845BB1E228C166200069E5BF /* FeedViewTableViewCell.swift in Sources */,
 				845BB1E428C16C790069E5BF /* LabelTableViewCell.swift in Sources */,
+				845BB1EB28C17D4D0069E5BF /* FeedCollectionViewCell.swift in Sources */,
+				845BB1ED28C17D8C0069E5BF /* LabelCollectionViewCell.swift in Sources */,
 				845BB1C328C162320069E5BF /* AppDelegate.swift in Sources */,
 				845BB1C528C162320069E5BF /* SceneDelegate.swift in Sources */,
+				845BB1E928C17CF40069E5BF /* CollectionViewController.swift in Sources */,
 				845BB1E728C16E540069E5BF /* FeedViewCache.swift in Sources */,
 				845BB1E028C1637D0069E5BF /* TableViewController.swift in Sources */,
 			);
