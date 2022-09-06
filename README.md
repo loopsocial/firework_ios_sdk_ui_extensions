@@ -14,7 +14,7 @@ This extension library is intended to be used alongside FireworkVideoSDK. Read o
 
 ### [Swift Package Manager](https://www.swift.org/package-manager/) **- RECOMMENDED**
 
-In your Xcode project, select File > Swift Packages > Add Package Dependency and enter the following URL: 
+In your Xcode project, select File > Add Packages... and enter the following URL: 
 ```
 https://github.com/loopsocial/firework_ios_sdk_ui_extensions/
 ```

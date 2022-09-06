@@ -45,13 +45,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Table View Example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ej9-aF-Xwf">
-                                                    <rect key="frame" x="20" y="11" width="151" height="21.5"/>
+                                                    <rect key="frame" x="20" y="11" width="345.5" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Ej9-aF-Xwf" secondAttribute="trailing" constant="20" id="KTO-x1-d14"/>
                                                 <constraint firstItem="Ej9-aF-Xwf" firstAttribute="leading" secondItem="jV8-5m-L58" secondAttribute="leadingMargin" id="Tw7-PE-fsx"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Ej9-aF-Xwf" secondAttribute="bottom" constant="0.5" id="WxX-Pn-ffH"/>
                                                 <constraint firstItem="Ej9-aF-Xwf" firstAttribute="top" secondItem="jV8-5m-L58" secondAttribute="topMargin" id="kqb-5S-X4j"/>
@@ -69,7 +70,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection View Example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zQ8-Ui-Pjw">
-                                                    <rect key="frame" x="20" y="11" width="187" height="21.5"/>
+                                                    <rect key="frame" x="20" y="11" width="345.5" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -79,6 +80,7 @@
                                                 <constraint firstItem="zQ8-Ui-Pjw" firstAttribute="leading" secondItem="Sdy-G9-ujH" secondAttribute="leadingMargin" id="IbD-Gk-gNa"/>
                                                 <constraint firstItem="zQ8-Ui-Pjw" firstAttribute="top" secondItem="Sdy-G9-ujH" secondAttribute="topMargin" id="eon-Jh-Hmh"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="zQ8-Ui-Pjw" secondAttribute="bottom" constant="0.5" id="oZB-Ve-IAV"/>
+                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="zQ8-Ui-Pjw" secondAttribute="trailing" constant="20" id="oeT-rP-JmY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -108,7 +110,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tBr-ws-L4E">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notUsed" id="tBr-ws-L4E">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tBr-ws-L4E" id="L9i-Kf-jrN">
@@ -143,7 +145,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fzd-VI-CiE">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="nutUsed" id="fzd-VI-CiE">
                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="obc-I7-YNM">
