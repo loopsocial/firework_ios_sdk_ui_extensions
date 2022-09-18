@@ -1,0 +1,45 @@
+
+/* Class = "UILabel"; text = "pl"; ObjectID = "Aff-cf-1Yf"; */
+"Aff-cf-1Yf.text" = "pl";
+
+/* Class = "UILabel"; text = "Table View Example"; ObjectID = "Ej9-aF-Xwf"; */
+"Ej9-aF-Xwf.text" = "Table View Example";
+
+/* Class = "UINavigationItem"; title = "Language override"; ObjectID = "Fkn-mN-WM6"; */
+"Fkn-mN-WM6.title" = "Language override";
+
+/* Class = "UINavigationItem"; title = "Examples"; ObjectID = "I5M-Db-1kD"; */
+"I5M-Db-1kD.title" = "Examples";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "OLe-hu-6ga"; */
+"OLe-hu-6ga.text" = "Detail";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "UYZ-Ae-pW5"; */
+"UYZ-Ae-pW5.title" = "Item";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "YD7-gn-3hV"; */
+"YD7-gn-3hV.title" = "Settings";
+
+/* Class = "UILabel"; text = "es"; ObjectID = "ddb-Yp-zB3"; */
+"ddb-Yp-zB3.text" = "es";
+
+/* Class = "UILabel"; text = "ar"; ObjectID = "hCU-XU-NX1"; */
+"hCU-XU-NX1.text" = "ar";
+
+/* Class = "UILabel"; text = "ja"; ObjectID = "hHO-1P-D6D"; */
+"hHO-1P-D6D.text" = "ja";
+
+/* Class = "UILabel"; text = "pt-BR"; ObjectID = "iGt-pI-s2J"; */
+"iGt-pI-s2J.text" = "pt-BR";
+
+/* Class = "UILabel"; text = "ru"; ObjectID = "ssQ-fT-X0F"; */
+"ssQ-fT-X0F.text" = "ru";
+
+/* Class = "UILabel"; text = "Language override"; ObjectID = "u8P-Z5-Bqq"; */
+"u8P-Z5-Bqq.text" = "Language override";
+
+/* Class = "UILabel"; text = "en"; ObjectID = "wLK-ai-U7P"; */
+"wLK-ai-U7P.text" = "en";
+
+/* Class = "UILabel"; text = "Collection View Example"; ObjectID = "zQ8-Ui-Pjw"; */
+"zQ8-Ui-Pjw.text" = "Collection View Example";

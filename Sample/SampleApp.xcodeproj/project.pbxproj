@@ -21,6 +21,9 @@
 		845BB1E928C17CF40069E5BF /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1E828C17CF40069E5BF /* CollectionViewController.swift */; };
 		845BB1EB28C17D4D0069E5BF /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1EA28C17D4D0069E5BF /* FeedCollectionViewCell.swift */; };
 		845BB1ED28C17D8C0069E5BF /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1EC28C17D8C0069E5BF /* LabelCollectionViewCell.swift */; };
+		922B094728D4DCA900D06122 /* Bundle+LocalizationOverride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B094628D4DCA900D06122 /* Bundle+LocalizationOverride.swift */; };
+		922B094C28D74FAF00D06122 /* LanguageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B094B28D74FAF00D06122 /* LanguageTableViewController.swift */; };
+		922B094E28D7535B00D06122 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B094D28D7535B00D06122 /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +42,9 @@
 		845BB1E828C17CF40069E5BF /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		845BB1EA28C17D4D0069E5BF /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		845BB1EC28C17D8C0069E5BF /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
+		922B094628D4DCA900D06122 /* Bundle+LocalizationOverride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+LocalizationOverride.swift"; sourceTree = "<group>"; };
+		922B094B28D74FAF00D06122 /* LanguageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTableViewController.swift; sourceTree = "<group>"; };
+		922B094D28D7535B00D06122 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,7 @@
 				845BB1E528C16E290069E5BF /* Utility */,
 				845BB1DE28C163400069E5BF /* CollectionViewExample */,
 				845BB1DD28C163380069E5BF /* TableViewExample */,
+				922B094828D74EAC00D06122 /* Settings */,
 				845BB1C228C162320069E5BF /* AppDelegate.swift */,
 				845BB1C428C162320069E5BF /* SceneDelegate.swift */,
 				845BB1C828C162320069E5BF /* Main.storyboard */,
@@ -118,9 +125,27 @@
 		845BB1E528C16E290069E5BF /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				922B094528D4DC6300D06122 /* Localization */,
 				845BB1E628C16E540069E5BF /* FeedViewCache.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		922B094528D4DC6300D06122 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				922B094628D4DCA900D06122 /* Bundle+LocalizationOverride.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		922B094828D74EAC00D06122 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				922B094B28D74FAF00D06122 /* LanguageTableViewController.swift */,
+				922B094D28D7535B00D06122 /* SettingsTableViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,12 +226,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				922B094728D4DCA900D06122 /* Bundle+LocalizationOverride.swift in Sources */,
 				845BB1E228C166200069E5BF /* FeedViewTableViewCell.swift in Sources */,
 				845BB1E428C16C790069E5BF /* LabelTableViewCell.swift in Sources */,
+				922B094C28D74FAF00D06122 /* LanguageTableViewController.swift in Sources */,
 				845BB1EB28C17D4D0069E5BF /* FeedCollectionViewCell.swift in Sources */,
 				845BB1ED28C17D8C0069E5BF /* LabelCollectionViewCell.swift in Sources */,
 				845BB1C328C162320069E5BF /* AppDelegate.swift in Sources */,
 				845BB1C528C162320069E5BF /* SceneDelegate.swift in Sources */,
+				922B094E28D7535B00D06122 /* SettingsTableViewController.swift in Sources */,
 				845BB1E928C17CF40069E5BF /* CollectionViewController.swift in Sources */,
 				845BB1E728C16E540069E5BF /* FeedViewCache.swift in Sources */,
 				845BB1E028C1637D0069E5BF /* TableViewController.swift in Sources */,
@@ -239,6 +267,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -299,6 +328,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

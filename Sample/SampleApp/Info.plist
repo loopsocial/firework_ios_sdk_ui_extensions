@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>FireworkVideoAppID</key>
-	<string></string>
+	<string>45c6f37c554d6a35911b3cb1352fe767c49ee492a8157a5e329dcd59a896b7cd</string>
+	<key>FireworkEnvironment</key>
+	<string>staging</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
