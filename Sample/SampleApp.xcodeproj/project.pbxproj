@@ -21,6 +21,8 @@
 		845BB1E928C17CF40069E5BF /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1E828C17CF40069E5BF /* CollectionViewController.swift */; };
 		845BB1EB28C17D4D0069E5BF /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1EA28C17D4D0069E5BF /* FeedCollectionViewCell.swift */; };
 		845BB1ED28C17D8C0069E5BF /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1EC28C17D8C0069E5BF /* LabelCollectionViewCell.swift */; };
+		8911E65F29E1507500AA5909 /* AppLanguageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8911E65E29E1507500AA5909 /* AppLanguageUtil.swift */; };
+		89E986F629E1282800FD0F9C /* ExampleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E986F529E1282800FD0F9C /* ExampleListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,12 @@
 		845BB1E828C17CF40069E5BF /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		845BB1EA28C17D4D0069E5BF /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		845BB1EC28C17D8C0069E5BF /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
+		8911E65E29E1507500AA5909 /* AppLanguageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLanguageUtil.swift; sourceTree = "<group>"; };
+		8990519829E1475200362957 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		8990519929E1475F00362957 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		8990519D29E147BD00362957 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		8990519F29E147D900362957 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		89E986F529E1282800FD0F9C /* ExampleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +92,7 @@
 				845BB1CB28C162340069E5BF /* Assets.xcassets */,
 				845BB1CD28C162340069E5BF /* LaunchScreen.storyboard */,
 				845BB1D028C162340069E5BF /* Info.plist */,
+				89E986F529E1282800FD0F9C /* ExampleListViewController.swift */,
 			);
 			path = SampleApp;
 			sourceTree = "<group>";
@@ -118,6 +127,7 @@
 		845BB1E528C16E290069E5BF /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				8911E65E29E1507500AA5909 /* AppLanguageUtil.swift */,
 				845BB1E628C16E540069E5BF /* FeedViewCache.swift */,
 			);
 			path = Utility;
@@ -169,6 +179,9 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
+				ja,
+				"pt-BR",
 			);
 			mainGroup = 845BB1B628C162310069E5BF;
 			packageReferences = (
@@ -203,11 +216,13 @@
 			files = (
 				845BB1E228C166200069E5BF /* FeedViewTableViewCell.swift in Sources */,
 				845BB1E428C16C790069E5BF /* LabelTableViewCell.swift in Sources */,
+				8911E65F29E1507500AA5909 /* AppLanguageUtil.swift in Sources */,
 				845BB1EB28C17D4D0069E5BF /* FeedCollectionViewCell.swift in Sources */,
 				845BB1ED28C17D8C0069E5BF /* LabelCollectionViewCell.swift in Sources */,
 				845BB1C328C162320069E5BF /* AppDelegate.swift in Sources */,
 				845BB1C528C162320069E5BF /* SceneDelegate.swift in Sources */,
 				845BB1E928C17CF40069E5BF /* CollectionViewController.swift in Sources */,
+				89E986F629E1282800FD0F9C /* ExampleListViewController.swift in Sources */,
 				845BB1E728C16E540069E5BF /* FeedViewCache.swift in Sources */,
 				845BB1E028C1637D0069E5BF /* TableViewController.swift in Sources */,
 			);
@@ -228,6 +243,10 @@
 			isa = PBXVariantGroup;
 			children = (
 				845BB1CE28C162340069E5BF /* Base */,
+				8990519829E1475200362957 /* ar */,
+				8990519929E1475F00362957 /* ja */,
+				8990519D29E147BD00362957 /* pt-BR */,
+				8990519F29E147D900362957 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -239,6 +258,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -299,6 +319,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

@@ -7,6 +7,7 @@
 
 import UIKit
 import FireworkVideo
+import FireworkVideoUI
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FireworkVideoSDK.initializeSDK()
+        
+        let languageName = AppLanguageUtil.shared.getCachedAppLanguageName() ?? "System"
+        let language = AppLanguageUtil.shared.getLanguageFromName(name: languageName)
+        AppLanguageManager.shared.changeAppLanguage(language)
         return true
     }
 
