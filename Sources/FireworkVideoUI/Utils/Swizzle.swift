@@ -1,12 +1,12 @@
 //
-//  SwizzleUtil.swift
+//  Swizzle.swift
 //  
 //  Created by linjie jiang on 2023/2/7.
 //
 
 import Foundation
 
-public class SwizzleUtil {
+public class Swizzle {
     public static func swizzleSelector(cls: AnyClass, originalSelector: Selector, customSelector: Selector) {
         guard let originalMethod = class_getInstanceMethod(cls, originalSelector) else { return }
         guard let customMethod = class_getInstanceMethod(cls, customSelector) else { return }
