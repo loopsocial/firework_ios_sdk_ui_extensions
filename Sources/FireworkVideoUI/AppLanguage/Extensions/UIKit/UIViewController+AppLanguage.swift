@@ -38,9 +38,11 @@ extension UIViewController {
 
     @objc func fw_viewDidLoad() {
         fw_viewDidLoad()
-        if self is StoryBlockViewController
-            || self is VideoFeedViewController {
-            self.view.viewType = .flip
+        if AppLanguageManager.shared.shouldHorizontalFlip {
+            if self is StoryBlockViewController
+                || self is VideoFeedViewController {
+                self.view.viewType = .flip
+            }
         }
     }
 }
