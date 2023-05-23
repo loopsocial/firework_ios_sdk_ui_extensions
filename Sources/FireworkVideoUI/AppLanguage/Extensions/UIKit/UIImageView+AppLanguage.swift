@@ -7,14 +7,6 @@
 import UIKit
 import FireworkVideo
 
-private let FWImageNamesWithDirections: [String] = [
-    "shopping-cart",
-    "left-arrow",
-    "right-arrow",
-    "speaker-unmute",
-    "speaker-mute"
-]
-
 extension UIImageView {
     static func swizzleImageViewMethodsForAppLanguage() {
         Swizzle.swizzleSelector(
@@ -55,29 +47,6 @@ extension UIImageView {
     private func shouldFlipImage(_ image: UIImage?) -> Bool {
         guard let image = image else {
             return false
-        }
-
-        if AppLanguageManager.shared.shouldHorizontalFlip, self.isIOSSDKView {
-            let iOSSDKBundle = Bundle(for: FireworkVideoSDK.self)
-
-            for imageName in FWImageNamesWithDirections {
-                let targetImage = UIImage(named: imageName, in: iOSSDKBundle, compatibleWith: nil)
-                if image.isEqual(targetImage) {
-                    return true
-                }
-
-                if let cgImage = image.cgImage,
-                   let targetCgImage = targetImage?.cgImage,
-                   cgImage == targetCgImage {
-                    return true
-                }
-
-                if let ciImage = image.ciImage,
-                   let targetCiImage = targetImage?.ciImage,
-                   ciImage == targetCiImage {
-                    return true
-                }
-            }
         }
 
         if AppLanguageManager.shared.shouldHorizontalFlip,
