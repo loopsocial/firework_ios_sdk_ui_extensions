@@ -36,3 +36,19 @@ However, this solution makes a lot of assumptions about the view hiearchy that m
 Additionally, when the view is nested in a `UIScrollView` type it will need to observe the bounds in order to properly manage the underlying `VideoFeedViewController`.
 
 Checkout the example project to see examples of how to use the `VideoFeedView` in both a `UITableView` and a `UICollectionView`.
+
+## App-level language setting
+
+```swift
+import FireworkVideoUI
+AppLanguageManager.shared.changeAppLanguage("ar") // such as ar, ar-JO, en, etc.
+```
+
+Generally, the `changeAppLanguage` API should be called in the following cases:
+  1. The App is launched(e.g. in the `application(:, didFinishLaunchingWithOptions:) -> Bool` method).
+  2. Users change the app language manually.
+  3. Other cases that change app language.
+
+After calling `changeAppLanguage` API, we need to recreate FireworkVideo SDK components to update the UI. Such as:
+  - Recreate video feed and story block
+  - Stop floating player
