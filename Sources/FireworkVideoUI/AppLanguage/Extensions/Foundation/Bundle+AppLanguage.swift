@@ -31,9 +31,7 @@ extension Bundle {
             } else if let path = iOSSDKBundle.path(forResource: languageCode, ofType: "lproj") {
                 languageBundlePath = path
             } else {
-                let targeLanguageList = iOSSDKBundle.localizations.filter { item in
-                    return item != "Base"
-                }
+                let targeLanguageList = iOSSDKBundle.localizations.filter { $0 != "Base" }
                 if let targeLanguage = targeLanguageList.first(where: { item in
                     let targeLanguageCode = LanguageUtil.getLanguageCode(item)
                     return languageCode == targeLanguageCode
@@ -44,7 +42,11 @@ extension Bundle {
 
             if let resultLanguageBundlePath = languageBundlePath ?? defaultLanguageBundlePath,
                let resultLanguageBundle = Bundle(path: resultLanguageBundlePath) {
-                let localizedString = resultLanguageBundle.fw_localizedString(forKey: key, value: value, table: tableName)
+                let localizedString = resultLanguageBundle.fw_localizedString(
+                    forKey: key,
+                    value: value,
+                    table: tableName
+                )
                 var keyNotFound = false
                 if (value ?? "").isEmpty && localizedString == key {
                     keyNotFound = true
@@ -53,7 +55,11 @@ extension Bundle {
                 }
                 if keyNotFound, resultLanguageBundlePath != defaultLanguageBundlePath {
                     let defaultLanguageBundle = Bundle(path: defaultLanguageBundlePath ?? "")
-                    return defaultLanguageBundle?.fw_localizedString(forKey: key, value: value, table: tableName) ?? localizedString
+                    return defaultLanguageBundle?.fw_localizedString(
+                        forKey: key,
+                        value: value,
+                        table: tableName
+                    ) ?? localizedString
                 } else {
                     return localizedString
                 }
