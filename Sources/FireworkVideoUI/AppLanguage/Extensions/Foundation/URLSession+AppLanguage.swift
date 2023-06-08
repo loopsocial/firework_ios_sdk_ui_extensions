@@ -6,11 +6,6 @@
 
 import Foundation
 
-private var FWHostList: [String] = [
-    "api.firework.tv",
-    "p2.fwpixel.com"
-]
-
 extension URLSession {
     static func swizzleURLSessionMethodsForAppLanguage() {
         // swiftlint:disable:next line_length
@@ -41,20 +36,8 @@ extension URLSession {
     }
 
     private func swizzleRequest(_ request: URLRequest) -> URLRequest {
-        var host = ""
-        #if compiler(>=5.7)
-        if #available(iOS 16, *) {
-            host = request.url?.host() ?? ""
-        } else {
-            host = request.url?.host ?? ""
-        }
-        #else
-        host = request.url?.host ?? ""
-        #endif
-
         if let language = AppLanguageManager.shared.appLanguage,
-           let languageCode = AppLanguageManager.shared.appLanguageCode,
-           FWHostList.contains(host) {
+           let languageCode = AppLanguageManager.shared.appLanguageCode {
             var mutableRequest = request
             if language != languageCode {
                 mutableRequest.setValue("\(language),\(languageCode);q=0.9", forHTTPHeaderField: "Accept-Language")
