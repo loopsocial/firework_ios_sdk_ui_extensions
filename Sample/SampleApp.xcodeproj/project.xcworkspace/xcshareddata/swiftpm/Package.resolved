@@ -5,8 +5,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AgoraIO/AgoraRtcEngine_iOS.git",
       "state" : {
-        "revision" : "13f007dff53e2c670ad645fae43e3fcea8f4df6c",
-        "version" : "4.1.1"
+        "revision" : "2e035dbfd39dea92ba9efd6447cd976fba85d5ff",
+        "version" : "4.2.2"
+      }
+    },
+    {
+      "identity" : "amazonivsplayer",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/loopsocial/AmazonIVSPlayer.git",
+      "state" : {
+        "revision" : "3ddba9b3dc668969017251e65110a6929d78d5fb",
+        "version" : "1.8.3"
       }
     },
     {
@@ -14,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/loopsocial/firework_ios_sdk",
       "state" : {
-        "revision" : "b63fa167c89a15fb6a1916ef0f03c349967235a9",
-        "version" : "1.9.0"
+        "revision" : "a5453e5439b20ad8def2631cf0d99e2297557b08",
+        "version" : "1.12.0"
       }
     },
     {
@@ -23,8 +32,98 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/loopsocial/firework_ios_sdk_agora_support.git",
       "state" : {
-        "revision" : "4082de71251b8afe6c8fb5a4c536a2745c20eb07",
-        "version" : "0.4.1"
+        "revision" : "d0ce3b68a30efca753bafd6364a63c0602815459",
+        "version" : "0.4.2"
+      }
+    },
+    {
+      "identity" : "firework_ios_sdk_gam_support",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/loopsocial/firework_ios_sdk_gam_support.git",
+      "state" : {
+        "revision" : "e67016d6ae31b0ee856998d81aad8bab783da493",
+        "version" : "0.3.0"
+      }
+    },
+    {
+      "identity" : "firework_ios_sdk_google_ima_support",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/loopsocial/firework_ios_sdk_google_ima_support.git",
+      "state" : {
+        "revision" : "fff9a1a55e642d3a2e8989ac8b28f64039085a18",
+        "version" : "0.3.0"
+      }
+    },
+    {
+      "identity" : "firework_ios_sdk_ivs_support",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/loopsocial/firework_ios_sdk_ivs_support.git",
+      "state" : {
+        "revision" : "96847a2d1de8addb5b6bb57fefa8ce7e0500dee1",
+        "version" : "0.5.0"
+      }
+    },
+    {
+      "identity" : "googleads-ima-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/loopsocial/GoogleAds-IMA-iOS-SDK.git",
+      "state" : {
+        "revision" : "c20485101be107e527b10a48e76a82f1388b5a8e",
+        "version" : "3.16.3"
+      }
+    },
+    {
+      "identity" : "googleappmeasurement",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google/GoogleAppMeasurement.git",
+      "state" : {
+        "revision" : "03b9beee1a61f62d32c521e172e192a1663a5e8b",
+        "version" : "10.13.0"
+      }
+    },
+    {
+      "identity" : "googleutilities",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google/GoogleUtilities.git",
+      "state" : {
+        "revision" : "c38ce365d77b04a9a300c31061c5227589e5597b",
+        "version" : "7.11.5"
+      }
+    },
+    {
+      "identity" : "nanopb",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/firebase/nanopb.git",
+      "state" : {
+        "revision" : "819d0a2173aff699fb8c364b6fb906f7cdb1a692",
+        "version" : "2.30909.0"
+      }
+    },
+    {
+      "identity" : "promises",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/google/promises.git",
+      "state" : {
+        "revision" : "e70e889c0196c76d22759eb50d6a0270ca9f1d9e",
+        "version" : "2.3.1"
+      }
+    },
+    {
+      "identity" : "swift-package-manager-google-mobile-ads",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/googleads/swift-package-manager-google-mobile-ads.git",
+      "state" : {
+        "revision" : "1a6faf6b9b82ddf8780f678745381b8628711077",
+        "version" : "10.9.0"
+      }
+    },
+    {
+      "identity" : "swift-package-manager-google-user-messaging-platform",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/googleads/swift-package-manager-google-user-messaging-platform.git",
+      "state" : {
+        "revision" : "129fa838520cd02174f890ae0cfe0242e60714ae",
+        "version" : "2.1.0"
       }
     }
   ],
