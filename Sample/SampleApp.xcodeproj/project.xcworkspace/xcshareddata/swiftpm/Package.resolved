@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/AgoraIO/AgoraRtcEngine_iOS.git",
       "state" : {
-        "revision" : "2e035dbfd39dea92ba9efd6447cd976fba85d5ff",
-        "version" : "4.2.2"
+        "revision" : "13f007dff53e2c670ad645fae43e3fcea8f4df6c",
+        "version" : "4.1.1"
       }
     },
     {
@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/loopsocial/firework_ios_sdk_agora_support.git",
       "state" : {
-        "revision" : "d0ce3b68a30efca753bafd6364a63c0602815459",
-        "version" : "0.4.2"
+        "revision" : "4082de71251b8afe6c8fb5a4c536a2745c20eb07",
+        "version" : "0.4.1"
       }
     },
     {
@@ -77,8 +77,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "03b9beee1a61f62d32c521e172e192a1663a5e8b",
-        "version" : "10.13.0"
+        "revision" : "62e3a0c09a75e2637f5300d46f05a59313f1c286",
+        "version" : "10.11.0"
       }
     },
     {
@@ -86,8 +86,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleUtilities.git",
       "state" : {
-        "revision" : "c38ce365d77b04a9a300c31061c5227589e5597b",
-        "version" : "7.11.5"
+        "revision" : "58d03d22beae762eaddbd30cb5a61af90d4b309f",
+        "version" : "7.11.3"
       }
     },
     {
@@ -104,8 +104,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/promises.git",
       "state" : {
-        "revision" : "e70e889c0196c76d22759eb50d6a0270ca9f1d9e",
-        "version" : "2.3.1"
+        "revision" : "ec957ccddbcc710ccc64c9dcbd4c7006fcf8b73a",
+        "version" : "2.2.0"
       }
     },
     {
@@ -113,8 +113,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/googleads/swift-package-manager-google-mobile-ads.git",
       "state" : {
-        "revision" : "1a6faf6b9b82ddf8780f678745381b8628711077",
-        "version" : "10.9.0"
+        "revision" : "a6e24f2167295d95371bfc3049e47381a73a9e43",
+        "version" : "10.7.0"
       }
     },
     {
@@ -122,8 +122,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/googleads/swift-package-manager-google-user-messaging-platform.git",
       "state" : {
-        "revision" : "129fa838520cd02174f890ae0cfe0242e60714ae",
-        "version" : "2.1.0"
+        "revision" : "3b924ce3313a5fd2fc6a8dc889a8c38f76890fe3",
+        "version" : "2.0.0"
       }
     }
   ],

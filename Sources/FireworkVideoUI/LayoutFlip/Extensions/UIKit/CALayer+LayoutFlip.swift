@@ -6,8 +6,6 @@
 
 import UIKit
 
-private var gHasEnabledHorizontalFlip = false
-
 extension CALayer {
     private struct AssociatedKeys {
         static var basicTransform = "basicTransform"
@@ -42,18 +40,20 @@ extension CALayer {
         }
 
         set {
-            if objc_getAssociatedObject(self, &AssociatedKeys.basicTransform) == nil,
-               CGAffineTransformIsIdentity(newValue) {
+            let newBasicTransformValue = NSValue(cgAffineTransform: newValue)
+            if (objc_getAssociatedObject(self, &AssociatedKeys.basicTransform) as? NSValue)
+                == newBasicTransformValue {
                 return
             }
-
+            
+            let currentAffineTransform = self.affineTransform()
             objc_setAssociatedObject(
                 self,
                 &AssociatedKeys.basicTransform,
-                NSValue(cgAffineTransform: newValue),
+                newBasicTransformValue,
                 .OBJC_ASSOCIATION_RETAIN_NONATOMIC
             )
-            self.setAffineTransform(self.affineTransform())
+            self.setAffineTransform(currentAffineTransform)
         }
     }
 
@@ -66,7 +66,7 @@ extension CALayer {
         set {
             objc_setAssociatedObject(
                 self,
-                &AssociatedKeys.basicTransform,
+                &AssociatedKeys.isRenderStartLayer,
                 newValue,
                 .OBJC_ASSOCIATION_RETAIN_NONATOMIC
             )
@@ -74,11 +74,7 @@ extension CALayer {
     }
 
     @objc func fw_setAffineTransform(_ affineTransform: CGAffineTransform) {
-        if !gHasEnabledHorizontalFlip && LayoutFlipManager.shared.enableHorizontalFlip {
-            gHasEnabledHorizontalFlip = true
-        }
-
-        if gHasEnabledHorizontalFlip {
+        if objc_getAssociatedObject(self, &AssociatedKeys.basicTransform) != nil {
             objc_setAssociatedObject(
                 self,
                 &AssociatedKeys.affineTransform,
@@ -92,11 +88,7 @@ extension CALayer {
     }
 
     @objc func fw_affineTransform() -> CGAffineTransform {
-        if !gHasEnabledHorizontalFlip && LayoutFlipManager.shared.enableHorizontalFlip {
-            gHasEnabledHorizontalFlip = true
-        }
-
-        if gHasEnabledHorizontalFlip {
+        if objc_getAssociatedObject(self, &AssociatedKeys.basicTransform) != nil {
             if let value = objc_getAssociatedObject(self, &AssociatedKeys.affineTransform) as? NSValue {
                 return value.cgAffineTransformValue
             }
@@ -107,7 +99,8 @@ extension CALayer {
     }
 
     @objc func fw_add(_ anim: CAAnimation, forKey key: String?) {
-        if let basicAnim = anim as? CABasicAnimation,
+        if objc_getAssociatedObject(self, &AssociatedKeys.basicTransform) != nil,
+           let basicAnim = anim as? CABasicAnimation,
            let keyPath = basicAnim.keyPath,
            keyPath.starts(with: "transform.scale"),
            self.basicTransform.a == -1,
@@ -121,11 +114,7 @@ extension CALayer {
     }
 
     @objc func fw_render(in ctx: CGContext) {
-        if !gHasEnabledHorizontalFlip && LayoutFlipManager.shared.enableHorizontalFlip {
-            gHasEnabledHorizontalFlip = true
-        }
-
-        if gHasEnabledHorizontalFlip {
+        if objc_getAssociatedObject(self, &AssociatedKeys.basicTransform) != nil {
             var isRenderStartLayer = true
             var allSuperLayerTransform = basicTransform
             var layer = self
