@@ -8,7 +8,7 @@ import UIKit
 
 private let appLanguageStorageKey = "firework_sdk_app_language_storage_key"
 
-enum AppLanguageLayoutDirection: Int {
+enum LanguageLayoutDirection: Int {
     case ltr, rtl, unsupported
 }
 
@@ -54,8 +54,23 @@ public class AppLanguageManager {
         return LanguageExtension.getLanguageCode(language)
     }
 
-    var appLanguageLayoutDirection: AppLanguageLayoutDirection? {
+    var appLanguageLayoutDirection: LanguageLayoutDirection? {
         guard let languageCode = appLanguageCode else {
+            return nil
+        }
+        let direction = Locale.characterDirection(forLanguage: languageCode)
+        switch direction {
+        case .leftToRight:
+            return .ltr
+        case .rightToLeft:
+            return .rtl
+        default:
+            return .unsupported
+        }
+    }
+    
+    var systemLanguageLayoutDirection: LanguageLayoutDirection? {
+        guard let languageCode = systemLanguageCode else {
             return nil
         }
         let direction = Locale.characterDirection(forLanguage: languageCode)
@@ -70,22 +85,13 @@ public class AppLanguageManager {
     }
 
     var shouldHorizontalFlip: Bool {
-        guard let appLanguageCode = appLanguageCode else {
-            return false
-        }
-
-        guard let systemLanguageCode = systemLanguageCode else {
-            return false
-        }
-
-        let appLanguageDirection = Locale.characterDirection(forLanguage: appLanguageCode)
-        let systemLanguageDirection = Locale.characterDirection(forLanguage: systemLanguageCode)
-
-        if appLanguageDirection == .leftToRight, systemLanguageDirection == .rightToLeft {
+        if appLanguageLayoutDirection == .rtl,
+           systemLanguageLayoutDirection == .ltr {
             return true
         }
-
-        if appLanguageDirection == .rightToLeft, systemLanguageDirection == .leftToRight {
+        
+        if appLanguageLayoutDirection == .ltr,
+           systemLanguageLayoutDirection == .rtl {
             return true
         }
 
