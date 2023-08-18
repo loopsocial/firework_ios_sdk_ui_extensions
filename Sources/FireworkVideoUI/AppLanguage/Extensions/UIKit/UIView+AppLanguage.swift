@@ -41,7 +41,15 @@ extension UIView {
 
     @objc func fw_semanticContentAttribute() -> UISemanticContentAttribute {
         if self.isIOSSDKView, AppLanguageManager.shared.shouldHorizontalFlip {
-            return .forceLeftToRight
+            let systemLanguageLayoutDirection = AppLanguageManager.shared.systemLanguageLayoutDirection ?? .unsupported
+            switch systemLanguageLayoutDirection {
+            case .ltr:
+                return .forceLeftToRight
+            case .rtl:
+                return .forceRightToLeft
+            case .unsupported:
+                return fw_semanticContentAttribute()
+            }
         }
 
         return fw_semanticContentAttribute()

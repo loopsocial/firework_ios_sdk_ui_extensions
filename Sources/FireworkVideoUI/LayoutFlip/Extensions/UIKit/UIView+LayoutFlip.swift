@@ -138,6 +138,9 @@ extension UIView {
     }
 
     func renewLayerTransformForceRecursively(_ forceRecursively: Bool) {
+        if !isIOSSDKView {
+            return
+        }
         updateCalculatedViewType()
         let updatedViewType = calculatedViewType
         let superViewCalculatedViewType = superview?.calculatedViewType ?? .auto
