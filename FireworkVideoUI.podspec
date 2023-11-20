@@ -6,10 +6,10 @@ Pod::Spec.new do |s|
   s.license      = 'Apache License, Version 2.0'
   s.authors      = 'Loop Now Technologies, Inc.'
 
-  s.platforms    = { ios: '12.0' }
-  s.source       = { git: 'https://github.com/loopsocial/firework_ios_sdk_ui_extensions.git', tag: "#{s.version}" }
+  s.platforms    = { ios: '13.0' }
+  s.source       = { git: 'https://github.com/loopsocial/firework_ios_sdk_ui_extensions.git', tag: "v#{s.version}" }
 
-  s.swift_version = '5.0'
+  s.swift_version = '5.3'
   s.source_files = 'Sources/**/*.{swift}'
 
   s.dependency 'FireworkVideo'
