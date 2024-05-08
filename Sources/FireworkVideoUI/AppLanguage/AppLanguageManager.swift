@@ -110,6 +110,7 @@ public class AppLanguageManager {
             UITextView.swizzleTextViewMethodsForAppLanguage()
             UIWindow.swizzleWindowMethodsForAppLanguage()
             UIView.swizzleViewMethodsForAppLanguage()
+            NSLocale.swizzleNSLocaleMethodsForAppLanguage()
         }
 
         LayoutFlipManager.swizzelMethods()
