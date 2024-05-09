@@ -103,7 +103,6 @@ public class AppLanguageManager {
             UIViewController.swizzleViewControllerMethodsForAppLanguage()
             Bundle.swizzleBundleMethodsForAppLanguage()
             URLSession.swizzleURLSessionMethodsForAppLanguage()
-            NumberFormatter.swizzleNumberFormatterMethodsForAppLanguage()
             UIImageView.swizzleImageViewMethodsForAppLanguage()
             UILabel.swizzleLabelMethodsForAppLanguage()
             UITextField.swizzleTextFieldMethodsForAppLanguage()
