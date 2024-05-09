@@ -12,6 +12,14 @@ extension NSLocale {
             cls: self,
             originalSelector: #selector(getter: NSLocale.current),
             customSelector: #selector(NSLocale.fw_current))
+        Swizzle.swizzleClassSelector(
+            cls: self,
+            originalSelector: #selector(getter: NSLocale.autoupdatingCurrent),
+            customSelector: #selector(NSLocale.fw_autoupdatingCurrent))
+        Swizzle.swizzleClassSelector(
+            cls: self,
+            originalSelector: #selector(getter: NSLocale.preferredLanguages),
+            customSelector: #selector(NSLocale.fw_preferredLanguages))
     }
 
     @objc static func fw_current() -> Locale {
@@ -20,5 +28,22 @@ extension NSLocale {
         }
 
         return fw_current()
+    }
+
+    @objc static func fw_autoupdatingCurrent() -> Locale {
+        if let language = AppLanguageManager.shared.appLanguage {
+            return Locale(identifier: language)
+        }
+
+        return fw_autoupdatingCurrent()
+    }
+
+    @objc static func fw_preferredLanguages() -> [String] {
+        let languages = fw_preferredLanguages()
+        if let language = AppLanguageManager.shared.appLanguage {
+            return [language] + languages
+        }
+
+        return languages
     }
 }
