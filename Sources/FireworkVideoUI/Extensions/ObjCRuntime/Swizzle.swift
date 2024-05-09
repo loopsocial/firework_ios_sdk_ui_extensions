@@ -32,14 +32,15 @@ public class Swizzle {
         guard let originalMethod = class_getClassMethod(cls, originalSelector) else { return }
         guard let customMethod = class_getClassMethod(cls, customSelector) else { return }
 
+        let clsType: AnyClass? = object_getClass(cls)
         if class_addMethod(
-            cls,
+            clsType,
             originalSelector,
             method_getImplementation(customMethod),
             method_getTypeEncoding(customMethod)
         ) {
             class_replaceMethod(
-                cls,
+                clsType,
                 customSelector,
                 method_getImplementation(originalMethod),
                 method_getTypeEncoding(originalMethod)

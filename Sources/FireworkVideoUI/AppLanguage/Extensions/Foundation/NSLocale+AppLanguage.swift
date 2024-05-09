@@ -22,7 +22,7 @@ extension NSLocale {
             customSelector: #selector(NSLocale.fw_preferredLanguages))
     }
 
-    @objc static func fw_current() -> Locale {
+    @objc class func fw_current() -> Locale {
         if let language = AppLanguageManager.shared.appLanguage {
             return Locale(identifier: language)
         }
@@ -30,7 +30,7 @@ extension NSLocale {
         return fw_current()
     }
 
-    @objc static func fw_autoupdatingCurrent() -> Locale {
+    @objc class func fw_autoupdatingCurrent() -> Locale {
         if let language = AppLanguageManager.shared.appLanguage {
             return Locale(identifier: language)
         }
@@ -38,7 +38,7 @@ extension NSLocale {
         return fw_autoupdatingCurrent()
     }
 
-    @objc static func fw_preferredLanguages() -> [String] {
+    @objc class func fw_preferredLanguages() -> [String] {
         let languages = fw_preferredLanguages()
         if let language = AppLanguageManager.shared.appLanguage {
             return [language] + languages
