@@ -32,6 +32,20 @@ public class Swizzle {
         guard let originalMethod = class_getClassMethod(cls, originalSelector) else { return }
         guard let customMethod = class_getClassMethod(cls, customSelector) else { return }
 
-        method_exchangeImplementations(originalMethod, customMethod)
+        if class_addMethod(
+            cls,
+            originalSelector,
+            method_getImplementation(customMethod),
+            method_getTypeEncoding(customMethod)
+        ) {
+            class_replaceMethod(
+                cls,
+                customSelector,
+                method_getImplementation(originalMethod),
+                method_getTypeEncoding(originalMethod)
+            )
+        } else {
+            method_exchangeImplementations(originalMethod, customMethod)
+        }
     }
 }
