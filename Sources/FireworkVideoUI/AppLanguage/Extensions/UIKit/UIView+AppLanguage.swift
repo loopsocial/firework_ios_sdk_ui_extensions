@@ -9,7 +9,7 @@ import FireworkVideo
 import AVFoundation
 
 private let gNamesOfImagesWithDirection: [String] = [
-    "stream-gate-back",
+    "c3RyZWFtLWdhdGUtYmFjaw==".decodeBase64String(),
 ]
 
 extension UIView {
@@ -66,8 +66,6 @@ extension UIView {
 
         DispatchQueue.main.async {
             if AppLanguageManager.shared.shouldHorizontalFlip {
-                // ImageLayer
-                // CGDrawingLayer
                 let swiftUIImageLayerClassName = "SW1hZ2VMYXllcg==".decodeBase64String()
                 let swiftUITextLayerClassName = "Q0dEcmF3aW5nTGF5ZXI=".decodeBase64String()
                 let layerClassName = String(describing: type(of: self.layer))
