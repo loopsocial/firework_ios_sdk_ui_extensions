@@ -8,9 +8,9 @@ import UIKit
 
 extension CALayer {
     private struct AssociatedKeys {
-        static var basicTransform = "basicTransform"
-        static var isRenderStartLayer = "isRenderStartLayer"
-        static var affineTransform = "affineTransform"
+        static var basicTransform: UInt8 = 0
+        static var isRenderStartLayer: UInt8 = 0
+        static var affineTransform: UInt8 = 0
     }
 
     static func swizzleLayerMethodsForLayoutFlip() {

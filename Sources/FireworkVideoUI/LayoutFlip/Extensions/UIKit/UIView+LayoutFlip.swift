@@ -32,9 +32,9 @@ enum LayoutFlipViewType: Int {
 
 extension UIView {
     private struct AssociatedKeys {
-        static var viewType = "viewType"
-        static var calculatedViewType = "calculatedViewType"
-        static var lastType = "lastType"
+        static var viewType: UInt8 = 0
+        static var calculatedViewType: UInt8 = 0
+        static var lastType: UInt8 = 0
     }
 
     static func swizzleViewMethodsForLayoutFlip() {
