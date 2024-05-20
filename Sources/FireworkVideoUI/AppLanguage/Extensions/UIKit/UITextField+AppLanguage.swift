@@ -8,7 +8,7 @@ import UIKit
 
 extension UITextField {
     private struct AssociatedKeys {
-        static var hasCalculatedTextAlignment = "hasCalculatedTextAlignmentKey"
+        static var hasCalculatedTextAlignment: UInt8 = 0
     }
 
     private var hasCalculatedTextAlignment: Bool {

@@ -10,7 +10,7 @@ typealias ReloadClosure = () -> Void
 
 extension NSObject {
     private struct AssociatedKeys {
-        static var reloadClosures = "reloadBlocks"
+        static var reloadClosures: UInt8 = 0
     }
 
     private var reloadClosures: [String: ReloadClosure] {
