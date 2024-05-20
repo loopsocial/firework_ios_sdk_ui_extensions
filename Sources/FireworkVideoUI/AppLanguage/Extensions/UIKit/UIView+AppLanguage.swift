@@ -8,6 +8,10 @@ import UIKit
 import FireworkVideo
 import AVFoundation
 
+private let gNamesOfImagesWithDirection: [String] = [
+    "c3RyZWFtLWdhdGUtYmFjaw==".decodeBase64String(),
+]
+
 extension UIView {
     static func swizzleViewMethodsForAppLanguage() {
         Swizzle.swizzleSelector(
@@ -61,6 +65,33 @@ extension UIView {
         }
 
         DispatchQueue.main.async {
+            if AppLanguageManager.shared.shouldHorizontalFlip {
+                let swiftUIImageLayerClassName = "SW1hZ2VMYXllcg==".decodeBase64String()
+                let swiftUITextLayerClassName = "Q0dEcmF3aW5nTGF5ZXI=".decodeBase64String()
+                let layerClassName = String(describing: type(of: self.layer))
+                if layerClassName == swiftUITextLayerClassName {
+                    view.viewType = .normal
+                } else if layerClassName == swiftUIImageLayerClassName {
+                    var resultViewType = LayoutFlipViewType.normal
+                    if let contents = self.layer.contents as? CFTypeRef,
+                       CFGetTypeID(contents) == CGImage.typeID {
+                        let image = self.layer.contents as! CGImage
+                        for imageName in gNamesOfImagesWithDirection {
+                            let imageWithDirection = UIImage(
+                                named: imageName,
+                                in: Bundle(for: FireworkVideoSDK.self),
+                                compatibleWith: nil
+                            )?.cgImage
+                            if image == imageWithDirection {
+                                resultViewType = .flip
+                                break
+                            }
+                        }
+                    }
+                    view.viewType = resultViewType
+                }
+            }
+
             if view.layer.sublayers?.first(where: { layer in
                 layer is AVPlayerLayer
             }) != nil, AppLanguageManager.shared.shouldHorizontalFlip {

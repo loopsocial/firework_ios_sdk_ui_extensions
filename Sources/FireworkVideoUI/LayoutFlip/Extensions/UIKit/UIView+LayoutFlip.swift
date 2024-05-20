@@ -17,8 +17,8 @@ private let gNoFlipClasses: [Any] = [
     "PUPhotosSectionHeaderContentView",
     "UITableViewIndex",
     "UIWebView",
-    "X1VJUmVtb3RlVmlldw==".decodeBase64String(), // _UIRemoteView
-    "VUlBdXRvY29ycmVjdFRleHRWaWV3".decodeBase64String() // UIAutocorrectTextView
+    "X1VJUmVtb3RlVmlldw==".decodeBase64String(),
+    "VUlBdXRvY29ycmVjdFRleHRWaWV3".decodeBase64String(),
 ]
 
 enum LayoutFlipViewType: Int {
@@ -151,7 +151,11 @@ extension UIView {
         let shouldSetFlipTransform = shouldFlipSuperview != shouldFlipCurrentView
 
         if shouldSetFlipTransform && LayoutFlipManager.shared.enableHorizontalFlip {
-            layer.basicTransform = CGAffineTransformMakeScale(-1, 1)
+            if layer.anchorPoint == CGPointZero {
+                layer.basicTransform = CGAffineTransformConcat(CGAffineTransformMakeScale(-1, 1), CGAffineTransform(translationX: layer.bounds.width, y: 0))
+            } else {
+                layer.basicTransform = CGAffineTransformMakeScale(-1, 1)
+            }
         } else {
             layer.basicTransform = CGAffineTransformIdentity
         }
