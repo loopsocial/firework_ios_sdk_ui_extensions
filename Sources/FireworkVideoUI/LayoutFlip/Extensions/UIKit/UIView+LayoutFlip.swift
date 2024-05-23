@@ -50,6 +50,10 @@ extension UIView {
             cls: self,
             originalSelector: #selector(UIView.snapshotView(afterScreenUpdates:)),
             customSelector: #selector(UIView.fw_snapshotView(afterScreenUpdates:)))
+        Swizzle.swizzleSelector(
+            cls: self,
+            originalSelector: #selector(UIView.layoutSubviews),
+            customSelector: #selector(UIView.fw_layoutSubviews))
     }
 
     var viewType: LayoutFlipViewType {
@@ -135,6 +139,11 @@ extension UIView {
         let view = fw_snapshotView(afterScreenUpdates: afterUpdates)
         view?.viewType = calculatedViewType
         return view
+    }
+
+    @objc func fw_layoutSubviews() {
+        fw_layoutSubviews()
+        renewLayerTransformForceRecursively(false)
     }
 
     func renewLayerTransformForceRecursively(_ forceRecursively: Bool) {

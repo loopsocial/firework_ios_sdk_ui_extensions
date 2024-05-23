@@ -64,31 +64,32 @@ extension UIView {
             view.viewType = .normal
         }
 
+        let swiftUIImageLayerClassName = "SW1hZ2VMYXllcg==".decodeBase64String()
+        let swiftUITextLayerClassName = "Q0dEcmF3aW5nTGF5ZXI=".decodeBase64String()
+        let layerClassName = String(describing: type(of: self.layer))
+
+        if AppLanguageManager.shared.shouldHorizontalFlip,
+           layerClassName == swiftUITextLayerClassName ||
+            layerClassName == swiftUIImageLayerClassName {
+            view.viewType = .normal
+        }
+
         DispatchQueue.main.async {
-            if AppLanguageManager.shared.shouldHorizontalFlip {
-                let swiftUIImageLayerClassName = "SW1hZ2VMYXllcg==".decodeBase64String()
-                let swiftUITextLayerClassName = "Q0dEcmF3aW5nTGF5ZXI=".decodeBase64String()
-                let layerClassName = String(describing: type(of: self.layer))
-                if layerClassName == swiftUITextLayerClassName {
-                    view.viewType = .normal
-                } else if layerClassName == swiftUIImageLayerClassName {
-                    var resultViewType = LayoutFlipViewType.normal
-                    if let contents = self.layer.contents as? CFTypeRef,
-                       CFGetTypeID(contents) == CGImage.typeID {
-                        let image = self.layer.contents as! CGImage
-                        for imageName in gNamesOfImagesWithDirection {
-                            let imageWithDirection = UIImage(
-                                named: imageName,
-                                in: Bundle(for: FireworkVideoSDK.self),
-                                compatibleWith: nil
-                            )?.cgImage
-                            if image == imageWithDirection {
-                                resultViewType = .flip
-                                break
-                            }
-                        }
+            if AppLanguageManager.shared.shouldHorizontalFlip,
+                layerClassName == swiftUIImageLayerClassName,
+               let contents = self.layer.contents as? CFTypeRef,
+               CFGetTypeID(contents) == CGImage.typeID {
+                let image = self.layer.contents as! CGImage
+                for imageName in gNamesOfImagesWithDirection {
+                    let imageWithDirection = UIImage(
+                        named: imageName,
+                        in: Bundle(for: FireworkVideoSDK.self),
+                        compatibleWith: nil
+                    )?.cgImage
+                    if image == imageWithDirection {
+                        view.viewType = .flip
+                        break
                     }
-                    view.viewType = resultViewType
                 }
             }
 
