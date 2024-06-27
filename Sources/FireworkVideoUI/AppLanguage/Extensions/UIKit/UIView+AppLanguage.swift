@@ -24,11 +24,6 @@ extension UIView {
             originalSelector: #selector(UIView.awakeFromNib),
             customSelector: #selector(UIView.fw_viewAwakeFromNib)
         )
-        Swizzle.swizzleSelector(
-            cls: self,
-            originalSelector: #selector(getter: UIView.semanticContentAttribute),
-            customSelector: #selector(UIView.fw_semanticContentAttribute)
-        )
     }
 
     @objc func fw_init(frame: CGRect) -> UIView {
@@ -41,22 +36,6 @@ extension UIView {
     @objc func fw_viewAwakeFromNib() {
         self.fw_viewAwakeFromNib()
         updateViewTypeIfNeeded(self)
-    }
-
-    @objc func fw_semanticContentAttribute() -> UISemanticContentAttribute {
-        if self.isIOSSDKView, AppLanguageManager.shared.shouldHorizontalFlip {
-            let systemLanguageLayoutDirection = AppLanguageManager.shared.systemLanguageLayoutDirection ?? .unsupported
-            switch systemLanguageLayoutDirection {
-            case .ltr:
-                return .forceLeftToRight
-            case .rtl:
-                return .forceRightToLeft
-            case .unsupported:
-                return fw_semanticContentAttribute()
-            }
-        }
-
-        return fw_semanticContentAttribute()
     }
 
     private func updateViewTypeIfNeeded(_ view: UIView) {

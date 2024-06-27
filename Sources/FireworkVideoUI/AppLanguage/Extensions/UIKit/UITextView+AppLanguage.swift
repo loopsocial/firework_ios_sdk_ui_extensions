@@ -34,9 +34,6 @@ extension UITextView {
         Swizzle.swizzleSelector(cls: self,
                                     originalSelector: #selector(UITextView.didMoveToWindow),
                                     customSelector: #selector(UITextView.fw_textViewDidMoveToWindow))
-        Swizzle.swizzleSelector(cls: self,
-                                      originalSelector: #selector(UITextView.removeFromSuperview),
-                                    customSelector: #selector(UITextView.fw_textViewRemoveFromSuperview))
     }
 
     @objc func fw_setTextViewTextAlignment(_ textAlignment: NSTextAlignment) {
@@ -51,16 +48,15 @@ extension UITextView {
 
     @objc func fw_textViewDidMoveToWindow() {
         fw_textViewDidMoveToWindow()
+        if self.window == nil {
+            self.hasCalculatedTextAlignment = false
+            return
+        }
         if shouldCalculateTextAlignment(),
            !self.hasCalculatedTextAlignment,
            self.isIOSSDKView {
             self.textAlignment = self.textAlignment
         }
-    }
-
-    @objc func fw_textViewRemoveFromSuperview() {
-        fw_textViewRemoveFromSuperview()
-        self.hasCalculatedTextAlignment = false
     }
 
     private func calculatedTextAlignment(_ textAlignment: NSTextAlignment) -> NSTextAlignment {

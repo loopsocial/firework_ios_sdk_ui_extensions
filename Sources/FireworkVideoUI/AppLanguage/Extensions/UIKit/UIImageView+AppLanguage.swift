@@ -27,6 +27,9 @@ extension UIImageView {
 
     @objc func fw_imageViewDidMoveToWindow() {
         fw_imageViewDidMoveToWindow()
+        if self.window == nil {
+            return
+        }
         updateViewType(self.image)
     }
 

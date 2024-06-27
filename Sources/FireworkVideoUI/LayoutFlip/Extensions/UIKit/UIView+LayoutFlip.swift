@@ -35,6 +35,7 @@ extension UIView {
         static var viewType: UInt8 = 0
         static var calculatedViewType: UInt8 = 0
         static var lastType: UInt8 = 0
+        static var hasCalculatedSemanticContentAttribute: UInt8 = 0
     }
 
     static func swizzleViewMethodsForLayoutFlip() {
@@ -124,15 +125,45 @@ extension UIView {
         }
     }
 
+    private var hasCalculatedSemanticContentAttribute: Bool {
+        get {
+            let result = objc_getAssociatedObject(self, &AssociatedKeys.hasCalculatedSemanticContentAttribute) as? Bool
+            return result ?? false
+        }
+
+        set {
+            objc_setAssociatedObject(
+                self,
+                &AssociatedKeys.hasCalculatedSemanticContentAttribute,
+                newValue,
+                .OBJC_ASSOCIATION_RETAIN_NONATOMIC
+            )
+        }
+    }
+
     @objc func fw_didMoveToSuperview() {
         fw_didMoveToSuperview()
+        if self.superview == nil {
+            return
+        }
+
         renewLayerTransformForceRecursively(false)
     }
 
     @objc func fw_didMoveToWindow() {
         fw_didMoveToWindow()
+        if self.window == nil {
+            hasCalculatedSemanticContentAttribute = false
+            return
+        }
+
         renewLayerTransformForceRecursively(false)
         LayoutFlipManager.shared.registerUIElement(self)
+        if !hasCalculatedSemanticContentAttribute,
+            shouldCalculateSemanticContentAttribute() {
+            semanticContentAttribute = calculateSemanticContentAttribute()
+            hasCalculatedSemanticContentAttribute = true
+        }
     }
 
     @objc func fw_snapshotView(afterScreenUpdates afterUpdates: Bool) -> UIView? {
@@ -210,6 +241,29 @@ extension UIView {
             calculatedViewType = superViewCalculatedViewType
         } else {
             calculatedViewType = resultCalculatedViewType
+        }
+    }
+
+    private func shouldCalculateSemanticContentAttribute() -> Bool {
+        if AppLanguageManager.shared.shouldHorizontalFlip,
+            isIOSSDKView,
+           let layoutDirection = AppLanguageManager.shared.appLanguageLayoutDirection,
+           layoutDirection != .unsupported {
+            return true
+        }
+
+        return false
+    }
+
+    private func calculateSemanticContentAttribute() -> UISemanticContentAttribute {
+        let systemLanguageLayoutDirection = AppLanguageManager.shared.systemLanguageLayoutDirection ?? .unsupported
+        switch systemLanguageLayoutDirection {
+        case .ltr:
+            return .forceLeftToRight
+        case .rtl:
+            return .forceRightToLeft
+        case .unsupported:
+            return .unspecified
         }
     }
 }

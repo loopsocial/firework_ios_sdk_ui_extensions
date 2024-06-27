@@ -24,7 +24,20 @@ public extension UIView {
         guard self.window != nil else {
             return false
         }
-        guard let parentVC = self.parentViewController else {
+
+        var targetView: UIView? = self
+        var targetParentVC = targetView?.parentViewController
+        while targetParentVC != nil {
+            let targetParentVCTypeName = String(reflecting: type(of: targetParentVC!))
+            if targetParentVCTypeName.hasPrefix("SwiftUI.") {
+                targetView = targetView?.superview
+                targetParentVC = targetView?.parentViewController
+            } else {
+                break
+            }
+        }
+
+        guard let parentVC = targetParentVC else {
             return false
         }
         let iOSSDKBundle = Bundle(for: FireworkVideoSDK.self)
