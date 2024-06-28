@@ -34,6 +34,9 @@ extension UILabel {
         Swizzle.swizzleSelector(cls: self,
                                     originalSelector: #selector(UILabel.didMoveToWindow),
                                     customSelector: #selector(UILabel.fw_labelDidMoveToWindow))
+        Swizzle.swizzleSelector(cls: self,
+                                originalSelector: #selector(UILabel.removeFromSuperview),
+                                customSelector: #selector(UILabel.fw_labelRemoveFromSuperview))
     }
 
     @objc func fw_setLabelTextAlignment(_ textAlignment: NSTextAlignment) {
@@ -49,7 +52,6 @@ extension UILabel {
     @objc func fw_labelDidMoveToWindow() {
         fw_labelDidMoveToWindow()
         if self.window == nil {
-            self.hasCalculatedTextAlignment = false
             return
         }
         if shouldCalculateTextAlignment(),
@@ -57,6 +59,11 @@ extension UILabel {
            self.isIOSSDKView {
             self.textAlignment = self.textAlignment
         }
+    }
+
+    @objc func fw_labelRemoveFromSuperview() {
+        fw_labelRemoveFromSuperview()
+        self.hasCalculatedTextAlignment = false
     }
 
     private func calculatedTextAlignment(_ textAlignment: NSTextAlignment) -> NSTextAlignment {

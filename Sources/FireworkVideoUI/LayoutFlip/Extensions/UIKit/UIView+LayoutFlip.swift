@@ -55,6 +55,9 @@ extension UIView {
             cls: self,
             originalSelector: #selector(UIView.layoutSubviews),
             customSelector: #selector(UIView.fw_layoutSubviews))
+        Swizzle.swizzleSelector(cls: self,
+                                originalSelector: #selector(UIView.removeFromSuperview),
+                                customSelector: #selector(UIView.fw_viewRemoveFromSuperview))
     }
 
     var viewType: LayoutFlipViewType {
@@ -153,7 +156,6 @@ extension UIView {
     @objc func fw_didMoveToWindow() {
         fw_didMoveToWindow()
         if self.window == nil {
-            hasCalculatedSemanticContentAttribute = false
             return
         }
 
@@ -175,6 +177,11 @@ extension UIView {
     @objc func fw_layoutSubviews() {
         fw_layoutSubviews()
         renewLayerTransformForceRecursively(false)
+    }
+
+    @objc func fw_viewRemoveFromSuperview() {
+        fw_viewRemoveFromSuperview()
+        hasCalculatedSemanticContentAttribute = false
     }
 
     func renewLayerTransformForceRecursively(_ forceRecursively: Bool) {

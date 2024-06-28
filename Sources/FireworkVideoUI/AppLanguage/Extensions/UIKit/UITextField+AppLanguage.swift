@@ -34,6 +34,9 @@ extension UITextField {
         Swizzle.swizzleSelector(cls: self,
                                     originalSelector: #selector(UITextField.didMoveToWindow),
                                     customSelector: #selector(UITextField.fw_textFieldDidMoveToWindow))
+        Swizzle.swizzleSelector(cls: self,
+                                originalSelector: #selector(UITextField.removeFromSuperview),
+                                customSelector: #selector(UITextField.fw_textFieldRemoveFromSuperview))
     }
 
     @objc func fw_setTextFieldTextAlignment(_ textAlignment: NSTextAlignment) {
@@ -49,7 +52,6 @@ extension UITextField {
     @objc func fw_textFieldDidMoveToWindow() {
         fw_textFieldDidMoveToWindow()
         if self.window == nil {
-            self.hasCalculatedTextAlignment = false
             return
         }
         if shouldCalculateTextAlignment(),
@@ -57,6 +59,11 @@ extension UITextField {
            self.isIOSSDKView {
             self.textAlignment = self.textAlignment
         }
+    }
+
+    @objc func fw_textFieldRemoveFromSuperview() {
+        fw_textFieldRemoveFromSuperview()
+        self.hasCalculatedTextAlignment = false
     }
 
     private func calculatedTextAlignment(_ textAlignment: NSTextAlignment) -> NSTextAlignment {
