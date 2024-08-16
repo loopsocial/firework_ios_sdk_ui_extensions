@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "FireworkVideoUI",
     platforms: [
-        .iOS(.v12),
+        .iOS(.v13),
     ],
     products: [
         .library(
@@ -14,7 +14,7 @@ let package = Package(
             targets: ["FireworkVideoUI"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/loopsocial/firework_ios_sdk.git", .upToNextMajor(from: .init(1, 9, 0)))
+        .package(url: "https://github.com/loopsocial/firework_ios_sdk.git", exact: Version("1.24.0-beta.2"))
     ],
     targets: [
         .target(

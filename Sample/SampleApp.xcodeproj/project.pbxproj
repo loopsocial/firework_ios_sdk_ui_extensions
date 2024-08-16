@@ -13,15 +13,17 @@
 		845BB1CC28C162340069E5BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845BB1CB28C162340069E5BF /* Assets.xcassets */; };
 		845BB1CF28C162340069E5BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 845BB1CD28C162340069E5BF /* LaunchScreen.storyboard */; };
 		845BB1D928C162700069E5BF /* FireworkVideoUI in Frameworks */ = {isa = PBXBuildFile; productRef = 845BB1D828C162700069E5BF /* FireworkVideoUI */; };
-		845BB1DC28C162B20069E5BF /* FireworkVideo in Frameworks */ = {isa = PBXBuildFile; productRef = 845BB1DB28C162B20069E5BF /* FireworkVideo */; };
 		845BB1E028C1637D0069E5BF /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1DF28C1637D0069E5BF /* TableViewController.swift */; };
 		845BB1E228C166200069E5BF /* FeedViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1E128C166200069E5BF /* FeedViewTableViewCell.swift */; };
 		845BB1E428C16C790069E5BF /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1E328C16C790069E5BF /* LabelTableViewCell.swift */; };
-		845BB1E728C16E540069E5BF /* FeedViewCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1E628C16E540069E5BF /* FeedViewCache.swift */; };
 		845BB1E928C17CF40069E5BF /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1E828C17CF40069E5BF /* CollectionViewController.swift */; };
 		845BB1EB28C17D4D0069E5BF /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1EA28C17D4D0069E5BF /* FeedCollectionViewCell.swift */; };
 		845BB1ED28C17D8C0069E5BF /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB1EC28C17D8C0069E5BF /* LabelCollectionViewCell.swift */; };
 		8911E65F29E1507500AA5909 /* AppLanguageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8911E65E29E1507500AA5909 /* AppLanguageUtil.swift */; };
+		897CF6692C6F290F0069C605 /* FeedViewTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897CF6682C6F290F0069C605 /* FeedViewTableViewCell2.swift */; };
+		897CF66B2C6F2D860069C605 /* TableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897CF66A2C6F2D860069C605 /* TableViewController2.swift */; };
+		897CF66D2C6F31190069C605 /* FeedCollectionViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897CF66C2C6F31190069C605 /* FeedCollectionViewCell2.swift */; };
+		897CF66F2C6F317D0069C605 /* CollectionViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897CF66E2C6F317D0069C605 /* CollectionViewController2.swift */; };
 		89E986F629E1282800FD0F9C /* ExampleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E986F529E1282800FD0F9C /* ExampleListViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,11 +39,14 @@
 		845BB1DF28C1637D0069E5BF /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		845BB1E128C166200069E5BF /* FeedViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewTableViewCell.swift; sourceTree = "<group>"; };
 		845BB1E328C16C790069E5BF /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
-		845BB1E628C16E540069E5BF /* FeedViewCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewCache.swift; sourceTree = "<group>"; };
 		845BB1E828C17CF40069E5BF /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		845BB1EA28C17D4D0069E5BF /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		845BB1EC28C17D8C0069E5BF /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
 		8911E65E29E1507500AA5909 /* AppLanguageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLanguageUtil.swift; sourceTree = "<group>"; };
+		897CF6682C6F290F0069C605 /* FeedViewTableViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewTableViewCell2.swift; sourceTree = "<group>"; };
+		897CF66A2C6F2D860069C605 /* TableViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController2.swift; sourceTree = "<group>"; };
+		897CF66C2C6F31190069C605 /* FeedCollectionViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell2.swift; sourceTree = "<group>"; };
+		897CF66E2C6F317D0069C605 /* CollectionViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController2.swift; sourceTree = "<group>"; };
 		8990519829E1475200362957 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		8990519929E1475F00362957 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		8990519D29E147BD00362957 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -55,7 +60,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				845BB1D928C162700069E5BF /* FireworkVideoUI in Frameworks */,
-				845BB1DC28C162B20069E5BF /* FireworkVideo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +114,8 @@
 				845BB1DF28C1637D0069E5BF /* TableViewController.swift */,
 				845BB1E128C166200069E5BF /* FeedViewTableViewCell.swift */,
 				845BB1E328C16C790069E5BF /* LabelTableViewCell.swift */,
+				897CF6682C6F290F0069C605 /* FeedViewTableViewCell2.swift */,
+				897CF66A2C6F2D860069C605 /* TableViewController2.swift */,
 			);
 			path = TableViewExample;
 			sourceTree = "<group>";
@@ -120,6 +126,8 @@
 				845BB1E828C17CF40069E5BF /* CollectionViewController.swift */,
 				845BB1EA28C17D4D0069E5BF /* FeedCollectionViewCell.swift */,
 				845BB1EC28C17D8C0069E5BF /* LabelCollectionViewCell.swift */,
+				897CF66C2C6F31190069C605 /* FeedCollectionViewCell2.swift */,
+				897CF66E2C6F317D0069C605 /* CollectionViewController2.swift */,
 			);
 			path = CollectionViewExample;
 			sourceTree = "<group>";
@@ -128,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				8911E65E29E1507500AA5909 /* AppLanguageUtil.swift */,
-				845BB1E628C16E540069E5BF /* FeedViewCache.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -151,7 +158,6 @@
 			name = SampleApp;
 			packageProductDependencies = (
 				845BB1D828C162700069E5BF /* FireworkVideoUI */,
-				845BB1DB28C162B20069E5BF /* FireworkVideo */,
 			);
 			productName = SampleApp;
 			productReference = 845BB1BF28C162310069E5BF /* SampleApp.app */;
@@ -185,7 +191,6 @@
 			);
 			mainGroup = 845BB1B628C162310069E5BF;
 			packageReferences = (
-				845BB1DA28C162B20069E5BF /* XCRemoteSwiftPackageReference "firework_ios_sdk" */,
 			);
 			productRefGroup = 845BB1C028C162320069E5BF /* Products */;
 			projectDirPath = "";
@@ -216,14 +221,17 @@
 			files = (
 				845BB1E228C166200069E5BF /* FeedViewTableViewCell.swift in Sources */,
 				845BB1E428C16C790069E5BF /* LabelTableViewCell.swift in Sources */,
+				897CF66B2C6F2D860069C605 /* TableViewController2.swift in Sources */,
 				8911E65F29E1507500AA5909 /* AppLanguageUtil.swift in Sources */,
 				845BB1EB28C17D4D0069E5BF /* FeedCollectionViewCell.swift in Sources */,
+				897CF66F2C6F317D0069C605 /* CollectionViewController2.swift in Sources */,
 				845BB1ED28C17D8C0069E5BF /* LabelCollectionViewCell.swift in Sources */,
+				897CF66D2C6F31190069C605 /* FeedCollectionViewCell2.swift in Sources */,
 				845BB1C328C162320069E5BF /* AppDelegate.swift in Sources */,
 				845BB1C528C162320069E5BF /* SceneDelegate.swift in Sources */,
 				845BB1E928C17CF40069E5BF /* CollectionViewController.swift in Sources */,
 				89E986F629E1282800FD0F9C /* ExampleListViewController.swift in Sources */,
-				845BB1E728C16E540069E5BF /* FeedViewCache.swift in Sources */,
+				897CF6692C6F290F0069C605 /* FeedViewTableViewCell2.swift in Sources */,
 				845BB1E028C1637D0069E5BF /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,26 +457,10 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		845BB1DA28C162B20069E5BF /* XCRemoteSwiftPackageReference "firework_ios_sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/loopsocial/firework_ios_sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
 		845BB1D828C162700069E5BF /* FireworkVideoUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FireworkVideoUI;
-		};
-		845BB1DB28C162B20069E5BF /* FireworkVideo */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 845BB1DA28C162B20069E5BF /* XCRemoteSwiftPackageReference "firework_ios_sdk" */;
-			productName = FireworkVideo;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

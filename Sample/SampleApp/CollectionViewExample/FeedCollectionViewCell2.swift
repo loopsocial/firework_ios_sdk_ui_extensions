@@ -1,62 +1,58 @@
 //
-//  FeedCollectionViewCell.swift
+//  FeedCollectionViewCell2.swift
 //  SampleApp
 //
-//  Created by Luke Davis on 9/1/22.
+//  Created by linjie jiang on 8/16/24.
 //
 
 import UIKit
 import FireworkVideoUI
 import FireworkVideo
 
-class FeedCollectionViewCell: UICollectionViewCell {
-    static let id = "\(FeedCollectionViewCell.self)"
+class FeedCollectionViewCell2: UICollectionViewCell {
+    static let id = "\(FeedCollectionViewCell2.self)"
 
     var source: VideoFeedContentSource?
     var indexPath: IndexPath?
 
-    private var feedView: VideoFeedView?
-
-    func updateSourceAndIndexPath(
-        source: VideoFeedContentSource,
-        indexPath: IndexPath
-    ) {
-        if !canReuseFeedView(source: source, indexPath: indexPath) {
-            feedView?.removeFromSuperview()
-            createFeedView(source: source)
+    var feedView: VideoFeedView? {
+        didSet {
+            if feedView != oldValue {
+                if let oldFeedView = oldValue,
+                   oldFeedView.superview == self.contentView {
+                    oldFeedView.removeFromSuperview()
+                }
+                updateFeedView()
+            }
         }
-
-        self.source = source
-        self.indexPath = indexPath
     }
 
-    private func canReuseFeedView(
-        source: VideoFeedContentSource,
-        indexPath: IndexPath
-    ) -> Bool {
-        return source == self.source && indexPath == self.indexPath
-    }
-
-    private func createFeedView(source: VideoFeedContentSource) {
-        let feedView = VideoFeedView(source: source)
+    private func updateFeedView() {
+        guard let feedView = feedView else {
+            return
+        }
         feedView.delegate = self
         var viewConfiguration = VideoFeedContentConfiguration()
         viewConfiguration.itemView.autoplay.isEnabled = true
         feedView.viewConfiguration = viewConfiguration
 
         feedView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(feedView)
+        if feedView.superview != contentView {
+            if feedView.superview != nil {
+                feedView.removeFromSuperview()
+            }
+            contentView.addSubview(feedView)
+        }
         NSLayoutConstraint.activate([
             feedView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             feedView.topAnchor.constraint(equalTo: contentView.topAnchor),
             feedView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             feedView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
-        self.feedView = feedView
     }
 }
 
-extension FeedCollectionViewCell: VideoFeedViewControllerDelegate {
+extension FeedCollectionViewCell2: VideoFeedViewControllerDelegate {
     func videoFeedDidLoadFeed(
         _ viewController: VideoFeedViewController
     ) {

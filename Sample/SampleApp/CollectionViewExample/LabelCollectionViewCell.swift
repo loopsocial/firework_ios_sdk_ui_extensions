@@ -36,10 +36,6 @@ class LabelCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            label.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor),
-            label.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor),
-            label.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor),
-            label.bottomAnchor.constraint(greaterThanOrEqualTo: contentView.bottomAnchor),
         ])
     }
 

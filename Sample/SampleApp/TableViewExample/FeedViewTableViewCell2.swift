@@ -1,21 +1,33 @@
 //
-//  FeedViewTableViewCell.swift
+//  File.swift
 //  SampleApp
 //
-//  Created by Luke Davis on 9/1/22.
+//  Created by linjie jiang on 8/16/24.
 //
+
+import Foundation
 
 import UIKit
 import FireworkVideoUI
 import FireworkVideo
 
-class FeedViewTableViewCell: UITableViewCell {
-    static let id = "\(FeedViewTableViewCell.self)"
+class FeedViewTableViewCell2: UITableViewCell {
+    static let id = "\(FeedViewTableViewCell2.self)"
 
     var source: VideoFeedContentSource?
     var indexPath: IndexPath?
 
-    private var feedView: VideoFeedView?
+    var feedView: VideoFeedView? {
+        didSet {
+            if feedView != oldValue {
+                if let oldFeedView = oldValue,
+                   oldFeedView.superview == self.contentView {
+                    oldFeedView.removeFromSuperview()
+                }
+                updateFeedView()
+            }
+        }
+    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -25,52 +37,38 @@ class FeedViewTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
 
-    func updateSourceAndIndexPath(
-        source: VideoFeedContentSource,
-        indexPath: IndexPath
-    ) {
-        if !canReuseFeedView(source: source, indexPath: indexPath) {
-            feedView?.removeFromSuperview()
-            createFeedView(source: source)
+    private func updateFeedView() {
+        guard let feedView = feedView else {
+            return
         }
-
-        self.source = source
-        self.indexPath = indexPath
-    }
-
-    private func canReuseFeedView(
-        source: VideoFeedContentSource,
-        indexPath: IndexPath
-    ) -> Bool {
-        return source == self.source && indexPath == self.indexPath
-    }
-
-    private func createFeedView(source: VideoFeedContentSource) {
-        let feedView = VideoFeedView(source: source)
         feedView.delegate = self
         var viewConfiguration = VideoFeedContentConfiguration()
         viewConfiguration.itemView.autoplay.isEnabled = true
         feedView.viewConfiguration = viewConfiguration
 
         feedView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(feedView)
+        if feedView.superview != contentView {
+            if feedView.superview != nil {
+                feedView.removeFromSuperview()
+            }
+            contentView.addSubview(feedView)
+        }
         NSLayoutConstraint.activate([
             feedView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             feedView.topAnchor.constraint(equalTo: contentView.topAnchor),
             feedView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             feedView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
-        self.feedView = feedView
     }
 }
 
-extension FeedViewTableViewCell: VideoFeedViewControllerDelegate {
+extension FeedViewTableViewCell2: VideoFeedViewControllerDelegate {
     func videoFeedDidLoadFeed(
         _ viewController: VideoFeedViewController
     ) {
 
     }
-    
+
     func videoFeed(
         _ viewController: VideoFeedViewController,
         didFailToLoadFeed error: VideoFeedError

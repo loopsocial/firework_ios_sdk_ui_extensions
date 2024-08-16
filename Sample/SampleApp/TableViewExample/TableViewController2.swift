@@ -1,15 +1,16 @@
 //
-//  TableViewController.swift
+//  TableViewController2.swift
 //  SampleApp
 //
-//  Created by Luke Davis on 9/1/22.
+//  Created by linjie jiang on 8/16/24.
 //
 
 import UIKit
 import FireworkVideo
 import FireworkVideoUI
 
-class TableViewController: UITableViewController {
+class TableViewController2: UITableViewController {
+    var feedViewCache = VideoFeedViewCache(capacity: 5)
 
     enum Item {
         case text(String)
@@ -36,8 +37,8 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(
-            FeedViewTableViewCell.self,
-            forCellReuseIdentifier: FeedViewTableViewCell.id
+            FeedViewTableViewCell2.self,
+            forCellReuseIdentifier: FeedViewTableViewCell2.id
         )
         tableView.register(
             LabelTableViewCell.self,
@@ -64,11 +65,10 @@ class TableViewController: UITableViewController {
             textCell.textLabel?.text = text
             return textCell
         case .videoFeed(let source):
-            let feedCell = tableView.dequeueReusableCell(withIdentifier: FeedViewTableViewCell.id, for: indexPath) as! FeedViewTableViewCell
-            feedCell.updateSourceAndIndexPath(source: source, indexPath: indexPath)
+            let feedCell = tableView.dequeueReusableCell(withIdentifier: FeedViewTableViewCell2.id, for: indexPath) as! FeedViewTableViewCell2
+            let feedView = feedViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
+            feedCell.feedView = feedView
             return feedCell
         }
     }
 }
-
-
