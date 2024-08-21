@@ -9,13 +9,13 @@ import UIKit
 import FireworkVideoUI
 import FireworkVideo
 
-class FeedViewTableViewCell: UITableViewCell {
-    static let id = "\(FeedViewTableViewCell.self)"
+class VideoFeedViewTableViewCell: UITableViewCell {
+    static let id = "\(VideoFeedViewTableViewCell.self)"
 
     var source: VideoFeedContentSource?
     var indexPath: IndexPath?
 
-    private var feedView: VideoFeedView?
+    private var videoFeedView: VideoFeedView?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -29,42 +29,42 @@ class FeedViewTableViewCell: UITableViewCell {
         source: VideoFeedContentSource,
         indexPath: IndexPath
     ) {
-        if !canReuseFeedView(source: source, indexPath: indexPath) {
-            feedView?.removeFromSuperview()
-            createFeedView(source: source)
+        if !canReuseVideoFeedView(source: source, indexPath: indexPath) {
+            videoFeedView?.removeFromSuperview()
+            createVideoFeedView(source: source)
         }
 
         self.source = source
         self.indexPath = indexPath
     }
 
-    private func canReuseFeedView(
+    private func canReuseVideoFeedView(
         source: VideoFeedContentSource,
         indexPath: IndexPath
     ) -> Bool {
         return source == self.source && indexPath == self.indexPath
     }
 
-    private func createFeedView(source: VideoFeedContentSource) {
-        let feedView = VideoFeedView(source: source)
-        feedView.delegate = self
+    private func createVideoFeedView(source: VideoFeedContentSource) {
+        let videoFeedView = VideoFeedView(source: source)
+        videoFeedView.delegate = self
         var viewConfiguration = VideoFeedContentConfiguration()
         viewConfiguration.itemView.autoplay.isEnabled = true
-        feedView.viewConfiguration = viewConfiguration
+        videoFeedView.viewConfiguration = viewConfiguration
 
-        feedView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(feedView)
+        videoFeedView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(videoFeedView)
         NSLayoutConstraint.activate([
-            feedView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            feedView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            feedView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            feedView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            videoFeedView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            videoFeedView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            videoFeedView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            videoFeedView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
-        self.feedView = feedView
+        self.videoFeedView = videoFeedView
     }
 }
 
-extension FeedViewTableViewCell: VideoFeedViewControllerDelegate {
+extension VideoFeedViewTableViewCell: VideoFeedViewControllerDelegate {
     func videoFeedDidLoadFeed(
         _ viewController: VideoFeedViewController
     ) {

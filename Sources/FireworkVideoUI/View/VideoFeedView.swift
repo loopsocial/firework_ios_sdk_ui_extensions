@@ -65,7 +65,11 @@ public class VideoFeedView: UIView {
         self.feedViewController = VideoFeedViewController()
         super.init(coder: coder)
     }
-    
+
+    public func refresh() {
+        feedViewController.refresh()
+    }
+
     public override func layoutSubviews() {
         super.layoutSubviews()
         embed()
@@ -74,10 +78,6 @@ public class VideoFeedView: UIView {
     public override func removeFromSuperview() {
         super.removeFromSuperview()
         feedViewController.detachFromParent()
-    }
-
-    public func refresh() {
-        feedViewController.refresh()
     }
 
     private func embed() {

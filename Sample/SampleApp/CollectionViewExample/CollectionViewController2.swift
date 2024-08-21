@@ -10,11 +10,13 @@ import FireworkVideo
 import FireworkVideoUI
 
 class CollectionViewController2: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    var feedViewCache = VideoFeedViewCache(capacity: 5)
+    let videoFeedViewCache = VideoFeedViewCache(capacity: 5)
+    let storyBlockViewCache = StoryBlockViewCache(capacity: 2)
 
     enum Item {
         case text(String)
         case videoFeed(VideoFeedContentSource)
+        case storyBlock(StoryBlockContentSource)
     }
 
     lazy var items: [Item] = [
@@ -25,17 +27,21 @@ class CollectionViewController2: UICollectionViewController, UICollectionViewDel
         .text("Non-feed Cell"),
         .videoFeed(.channel(channelID: "bJDywZ")),
         .text("Non-feed Cell"),
-        .videoFeed(.discover),
+        .storyBlock(.channelPlaylist(channelID: "bJDywZ", playlistID: "g206q5")),
         .text("Non-feed Cell"),
-        .videoFeed(.discover),
+        .storyBlock(.channel(channelID: "bJDywZ")),
         .text("Non-feed Cell"),
     ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(
-            FeedCollectionViewCell2.self,
-            forCellWithReuseIdentifier: FeedCollectionViewCell2.id
+            VideoFeedCollectionViewCell2.self,
+            forCellWithReuseIdentifier: VideoFeedCollectionViewCell2.id
+        )
+        collectionView.register(
+            StoryBlockViewCollectionViewCell2.self,
+            forCellWithReuseIdentifier: StoryBlockViewCollectionViewCell2.id
         )
         collectionView.register(
             LabelCollectionViewCell.self,
@@ -52,7 +58,14 @@ class CollectionViewController2: UICollectionViewController, UICollectionViewDel
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 240)
+        switch items[indexPath.row] {
+        case .text:
+            return CGSize(width: collectionView.bounds.width, height: 100)
+        case .videoFeed:
+            return CGSize(width: collectionView.bounds.width, height: 240)
+        case .storyBlock:
+            return CGSize(width: collectionView.bounds.width, height: 500)
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -62,10 +75,15 @@ class CollectionViewController2: UICollectionViewController, UICollectionViewDel
             textCell.text = text
             return textCell
         case .videoFeed(let source):
-            let feedCell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCollectionViewCell2.id, for: indexPath) as! FeedCollectionViewCell2
-            let feedView = feedViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
-            feedCell.feedView = feedView
-            return feedCell
+            let videoFeedCell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoFeedCollectionViewCell2.id, for: indexPath) as! VideoFeedCollectionViewCell2
+            let videoFeedView = videoFeedViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
+            videoFeedCell.videoFeedView = videoFeedView
+            return videoFeedCell
+        case .storyBlock(let source):
+            let storyBlockCell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryBlockViewCollectionViewCell2.id, for: indexPath) as! StoryBlockViewCollectionViewCell2
+            let storyBlockView = storyBlockViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
+            storyBlockCell.storyBlockView = storyBlockView
+            return storyBlockCell
         }
     }
 }

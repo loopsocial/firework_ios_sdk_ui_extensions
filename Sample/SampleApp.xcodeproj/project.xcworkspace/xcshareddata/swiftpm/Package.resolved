@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/loopsocial/firework_ios_sdk.git",
       "state" : {
-        "revision" : "6f70210d5279182aed27e87cd1f7e06ef09b1652",
-        "version" : "1.24.0-beta.2"
+        "revision" : "1f0f4cf00a2916f11f6398380ec309eaf92c5672",
+        "version" : "1.24.0-beta.3"
       }
     }
   ],

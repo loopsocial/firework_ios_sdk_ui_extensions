@@ -14,7 +14,7 @@ let package = Package(
             targets: ["FireworkVideoUI"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/loopsocial/firework_ios_sdk.git", exact: Version("1.24.0-beta.2"))
+        .package(url: "https://github.com/loopsocial/firework_ios_sdk.git", exact: Version("1.24.0-beta.3"))
     ],
     targets: [
         .target(

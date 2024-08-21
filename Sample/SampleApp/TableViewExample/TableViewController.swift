@@ -14,6 +14,7 @@ class TableViewController: UITableViewController {
     enum Item {
         case text(String)
         case videoFeed(VideoFeedContentSource)
+        case storyBlock(StoryBlockContentSource)
     }
 
     lazy var items: [Item] = [
@@ -27,17 +28,21 @@ class TableViewController: UITableViewController {
         .videoFeed(.channel(channelID: "bJDywZ")),
         .text("Non-feed Cell"),
         .text("Non-feed Cell"),
-        .videoFeed(.discover),
+        .storyBlock(.channelPlaylist(channelID: "bJDywZ", playlistID: "g206q5")),
         .text("Non-feed Cell"),
         .text("Non-feed Cell"),
-        .videoFeed(.discover),
+        .storyBlock(.channel(channelID: "bJDywZ")),
     ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(
-            FeedViewTableViewCell.self,
-            forCellReuseIdentifier: FeedViewTableViewCell.id
+            VideoFeedViewTableViewCell.self,
+            forCellReuseIdentifier: VideoFeedViewTableViewCell.id
+        )
+        tableView.register(
+            StoryBlockTableViewCell.self,
+            forCellReuseIdentifier: StoryBlockTableViewCell.id
         )
         tableView.register(
             LabelTableViewCell.self,
@@ -54,7 +59,14 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 240
+        switch items[indexPath.row] {
+        case .text:
+            return 100
+        case .videoFeed:
+            return 240
+        case .storyBlock:
+            return 500
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,9 +76,13 @@ class TableViewController: UITableViewController {
             textCell.textLabel?.text = text
             return textCell
         case .videoFeed(let source):
-            let feedCell = tableView.dequeueReusableCell(withIdentifier: FeedViewTableViewCell.id, for: indexPath) as! FeedViewTableViewCell
-            feedCell.updateSourceAndIndexPath(source: source, indexPath: indexPath)
-            return feedCell
+            let videoFeedCell = tableView.dequeueReusableCell(withIdentifier: VideoFeedViewTableViewCell.id, for: indexPath) as! VideoFeedViewTableViewCell
+            videoFeedCell.updateSourceAndIndexPath(source: source, indexPath: indexPath)
+            return videoFeedCell
+        case .storyBlock(let source):
+            let storyBlockCell = tableView.dequeueReusableCell(withIdentifier: StoryBlockTableViewCell.id, for: indexPath) as! StoryBlockTableViewCell
+            storyBlockCell.updateSourceAndIndexPath(source: source, indexPath: indexPath)
+            return storyBlockCell
         }
     }
 }

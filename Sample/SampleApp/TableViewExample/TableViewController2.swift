@@ -10,11 +10,13 @@ import FireworkVideo
 import FireworkVideoUI
 
 class TableViewController2: UITableViewController {
-    var feedViewCache = VideoFeedViewCache(capacity: 5)
+    let videoFeedViewCache = VideoFeedViewCache(capacity: 3)
+    let storyBlockViewCache = StoryBlockViewCache(capacity: 2)
 
     enum Item {
         case text(String)
         case videoFeed(VideoFeedContentSource)
+        case storyBlock(StoryBlockContentSource)
     }
 
     lazy var items: [Item] = [
@@ -28,17 +30,21 @@ class TableViewController2: UITableViewController {
         .videoFeed(.channel(channelID: "bJDywZ")),
         .text("Non-feed Cell"),
         .text("Non-feed Cell"),
-        .videoFeed(.discover),
+        .storyBlock(.channelPlaylist(channelID: "bJDywZ", playlistID: "g206q5")),
         .text("Non-feed Cell"),
         .text("Non-feed Cell"),
-        .videoFeed(.discover),
+        .storyBlock(.channel(channelID: "bJDywZ")),
     ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(
-            FeedViewTableViewCell2.self,
-            forCellReuseIdentifier: FeedViewTableViewCell2.id
+            VideoFeedViewTableViewCell2.self,
+            forCellReuseIdentifier: VideoFeedViewTableViewCell2.id
+        )
+        tableView.register(
+            StoryBlockViewTableViewCell2.self,
+            forCellReuseIdentifier: StoryBlockViewTableViewCell2.id
         )
         tableView.register(
             LabelTableViewCell.self,
@@ -55,7 +61,14 @@ class TableViewController2: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 240
+        switch items[indexPath.row] {
+        case .text:
+            return 100
+        case .videoFeed:
+            return 240
+        case .storyBlock:
+            return 500
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,10 +78,15 @@ class TableViewController2: UITableViewController {
             textCell.textLabel?.text = text
             return textCell
         case .videoFeed(let source):
-            let feedCell = tableView.dequeueReusableCell(withIdentifier: FeedViewTableViewCell2.id, for: indexPath) as! FeedViewTableViewCell2
-            let feedView = feedViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
-            feedCell.feedView = feedView
-            return feedCell
+            let videoFeedCell = tableView.dequeueReusableCell(withIdentifier: VideoFeedViewTableViewCell2.id, for: indexPath) as! VideoFeedViewTableViewCell2
+            let videoFeedView = videoFeedViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
+            videoFeedCell.videoFeedView = videoFeedView
+            return videoFeedCell
+        case .storyBlock(let source):
+            let storyBlockCell = tableView.dequeueReusableCell(withIdentifier: StoryBlockViewTableViewCell2.id, for: indexPath) as! StoryBlockViewTableViewCell2
+            let storyBlockView = storyBlockViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
+            storyBlockCell.storyBlockView = storyBlockView
+            return storyBlockCell
         }
     }
 }
