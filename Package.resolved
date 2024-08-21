@@ -1,30 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "agorartcengine_ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AgoraIO/AgoraRtcEngine_iOS.git",
-      "state" : {
-        "revision" : "13f007dff53e2c670ad645fae43e3fcea8f4df6c",
-        "version" : "4.1.1"
-      }
-    },
-    {
       "identity" : "firework_ios_sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/loopsocial/firework_ios_sdk.git",
       "state" : {
-        "revision" : "b63fa167c89a15fb6a1916ef0f03c349967235a9",
-        "version" : "1.9.0"
-      }
-    },
-    {
-      "identity" : "firework_ios_sdk_agora_support",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/loopsocial/firework_ios_sdk_agora_support.git",
-      "state" : {
-        "revision" : "4082de71251b8afe6c8fb5a4c536a2745c20eb07",
-        "version" : "0.4.1"
+        "revision" : "6a48583650f89d39e80671e645a66107e4d800de",
+        "version" : "1.24.0-beta.4"
       }
     }
   ],
