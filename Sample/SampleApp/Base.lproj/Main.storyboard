@@ -4,10 +4,27 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--SwiftUI View Controller-->
+        <scene sceneID="tpn-FE-WOC">
+            <objects>
+                <viewController id="6UX-ra-mey" customClass="SwiftUIViewController" customModule="SampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IxZ-2L-DMi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ZKx-xf-XB2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pRn-pu-XiA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JLZ-rQ-ClY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1755" y="-794"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="UbB-XL-Ov7">
             <objects>
@@ -50,7 +67,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUH-AL-RdL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2029" y="-670"/>
+            <point key="canvasLocation" x="2670" y="-621"/>
         </scene>
         <!--Examples-->
         <scene sceneID="Hwq-Ew-mIc">
@@ -161,6 +178,31 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="oA8-Ej-Jae" kind="show" id="838-e9-KJc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="0nx-Yc-qFR">
+                                        <rect key="frame" x="0.0" y="226" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0nx-Yc-qFR" id="KYq-NN-rHQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="383.5" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SwiftUI Example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcv-2Y-k72">
+                                                    <rect key="frame" x="20" y="11" width="343.5" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="rcv-2Y-k72" secondAttribute="bottom" constant="0.5" id="Gba-cH-uEU"/>
+                                                <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="rcv-2Y-k72" secondAttribute="trailing" constant="20" id="Z50-Gg-i74"/>
+                                                <constraint firstItem="rcv-2Y-k72" firstAttribute="leading" secondItem="KYq-NN-rHQ" secondAttribute="leadingMargin" id="fNV-Jf-gZk"/>
+                                                <constraint firstItem="rcv-2Y-k72" firstAttribute="top" secondItem="KYq-NN-rHQ" secondAttribute="topMargin" id="v1h-Eh-Vdn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="6UX-ra-mey" kind="show" id="RQ6-ag-KfU"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

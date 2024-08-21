@@ -21,6 +21,7 @@
 		89089C3D2C758AB9009EC4B9 /* StoryBlockCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89089C3C2C758AB9009EC4B9 /* StoryBlockCollectionViewCell.swift */; };
 		89089C422C75904E009EC4B9 /* StoryBlockTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89089C412C75904E009EC4B9 /* StoryBlockTableViewCell2.swift */; };
 		89089C442C759552009EC4B9 /* StoryBlockCollectionViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89089C432C759552009EC4B9 /* StoryBlockCollectionViewCell2.swift */; };
+		89089C4F2C75D89E009EC4B9 /* SwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89089C4E2C75D89E009EC4B9 /* SwiftUIViewController.swift */; };
 		8911E65F29E1507500AA5909 /* AppLanguageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8911E65E29E1507500AA5909 /* AppLanguageUtil.swift */; };
 		897CF6692C6F290F0069C605 /* VideoFeedViewTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897CF6682C6F290F0069C605 /* VideoFeedViewTableViewCell2.swift */; };
 		897CF66B2C6F2D860069C605 /* TableViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897CF66A2C6F2D860069C605 /* TableViewController2.swift */; };
@@ -48,6 +49,7 @@
 		89089C3C2C758AB9009EC4B9 /* StoryBlockCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBlockCollectionViewCell.swift; sourceTree = "<group>"; };
 		89089C412C75904E009EC4B9 /* StoryBlockTableViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBlockTableViewCell2.swift; sourceTree = "<group>"; };
 		89089C432C759552009EC4B9 /* StoryBlockCollectionViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBlockCollectionViewCell2.swift; sourceTree = "<group>"; };
+		89089C4E2C75D89E009EC4B9 /* SwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewController.swift; sourceTree = "<group>"; };
 		8911E65E29E1507500AA5909 /* AppLanguageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLanguageUtil.swift; sourceTree = "<group>"; };
 		897CF6682C6F290F0069C605 /* VideoFeedViewTableViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeedViewTableViewCell2.swift; sourceTree = "<group>"; };
 		897CF66A2C6F2D860069C605 /* TableViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController2.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		845BB1C128C162320069E5BF /* SampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				89089C4D2C75D867009EC4B9 /* SwiftUIExample */,
 				845BB1E528C16E290069E5BF /* Utility */,
 				845BB1DE28C163400069E5BF /* CollectionViewExample */,
 				845BB1DD28C163380069E5BF /* TableViewExample */,
@@ -150,6 +153,14 @@
 				8911E65E29E1507500AA5909 /* AppLanguageUtil.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		89089C4D2C75D867009EC4B9 /* SwiftUIExample */ = {
+			isa = PBXGroup;
+			children = (
+				89089C4E2C75D89E009EC4B9 /* SwiftUIViewController.swift */,
+			);
+			path = SwiftUIExample;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +253,7 @@
 				845BB1C328C162320069E5BF /* AppDelegate.swift in Sources */,
 				845BB1C528C162320069E5BF /* SceneDelegate.swift in Sources */,
 				845BB1E928C17CF40069E5BF /* CollectionViewController.swift in Sources */,
+				89089C4F2C75D89E009EC4B9 /* SwiftUIViewController.swift in Sources */,
 				89E986F629E1282800FD0F9C /* ExampleListViewController.swift in Sources */,
 				89089C422C75904E009EC4B9 /* StoryBlockTableViewCell2.swift in Sources */,
 				897CF6732C6F3A5D0069C605 /* StoryBlockTableViewCell.swift in Sources */,

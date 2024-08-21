@@ -41,7 +41,8 @@ class StoryBlockCollectionViewCell: UICollectionViewCell {
         let storyBlockView = StoryBlockView(source: source)
         storyBlockView.delegate = self
         var viewConfiguration = StoryBlockConfiguration()
-        viewConfiguration.autoplay.isEnabled = false
+        viewConfiguration.playbackButton.isHidden = false
+        viewConfiguration.fullScreenPlayerView.playbackButton.isHidden = false
         storyBlockView.viewConfiguration = viewConfiguration
 
         storyBlockView.translatesAutoresizingMaskIntoConstraints = false
