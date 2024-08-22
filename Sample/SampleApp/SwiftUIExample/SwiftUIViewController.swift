@@ -7,8 +7,8 @@
 
 import UIKit
 import SwiftUI
-import FireworkVideoUI
 import FireworkVideo
+import FireworkVideoUI
 
 struct SwiftUIListView: View {
     var body: some View {

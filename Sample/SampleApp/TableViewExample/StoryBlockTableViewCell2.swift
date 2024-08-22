@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import FireworkVideoUI
 import FireworkVideo
+import FireworkVideoUI
 
 class StoryBlockViewTableViewCell2: UITableViewCell {
     static let id = "\(StoryBlockViewTableViewCell2.self)"

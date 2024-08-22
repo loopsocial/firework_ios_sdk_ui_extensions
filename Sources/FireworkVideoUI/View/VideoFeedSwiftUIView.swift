@@ -14,6 +14,15 @@ public struct VideoFeedHandler {
         self.videoFeedVC = videoFeedVC
     }
 
+    /**
+     Force refreshes the video feed.
+
+     Provides a way to force refresh the entire video feed. This is helpful when you support features like pull to refresh.
+
+     - important: Any calls to this method while the Firework Video Player is presented will be ignored.
+
+     - warning: This will replace all the items in the current feed.
+     */
     public func refresh() {
         videoFeedVC?.refresh()
     }
@@ -21,6 +30,9 @@ public struct VideoFeedHandler {
 
 public typealias GetVideoFeedHandlerClosure = (_ handler: VideoFeedHandler) -> Void
 
+/**
+ The `VideoFeedSwiftUIView` provides a SwiftUI View wrapper of the `FireworkVideo.VideoFeedViewController`. You can customize the `VideoFeedSwiftUIView` just like the `FireworkVideo.VideoFeedViewController`.
+ */
 public struct VideoFeedSwiftUIView: UIViewControllerRepresentable {
     public typealias UIViewControllerType = VideoFeedViewController
 
@@ -87,6 +99,23 @@ public struct VideoFeedSwiftUIView: UIViewControllerRepresentable {
     private let onGetFeedID: GetFeedIDClosure?
     private let onGetVideoFeedHandler: GetVideoFeedHandlerClosure?
 
+    /// Initializes VideoFeedSwfitUIView.
+    /// - Parameters:
+    ///   - layout: The video feed layout. Defaults to VideoFeedHorizontalLayout().
+    ///   - source: The video content source. Defaults to `.discover`.
+    ///   - adConfiguration: The ad configuration. See `AdConfiguration` default values.
+    ///   - viewConfiguration: The video configuration for the video feed.
+    ///   - isPictureInPictureEnabled: Indicate whether pip is enabled.
+    ///   - onVideoFeedLoaded: Called when the video feed is loaded.
+    ///   - onVideoFeedFailedToLoad: Called when the video feed loading fails.
+    ///   - onPipDidStart: Called when the pip will start.
+    ///   - onPipDidStart: Called after the pip started.
+    ///   - onPipFailedToStart: Called when pip failed to start.
+    ///   - onPipWillStop: Called when the pip will stop.
+    ///   - onPipDidStop: Called after the pip stopped.
+    ///   - onPipRestoreUserInterface: Host app could set this closure to restore the user interface before Picture in Picture stops.
+    ///   - onGetFeedID: Host app could get feed using this closure.
+    ///   - onGetVideoFeedHandler: Host app could get `VideoFeedHandler` using this closure.
     public init(
         layout: VideoFeedLayout = VideoFeedHorizontalLayout(),
         source: VideoFeedContentSource = .discover,

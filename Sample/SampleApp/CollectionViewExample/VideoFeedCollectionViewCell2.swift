@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import FireworkVideoUI
 import FireworkVideo
+import FireworkVideoUI
 
 class VideoFeedCollectionViewCell2: UICollectionViewCell {
     static let id = "\(VideoFeedCollectionViewCell2.self)"

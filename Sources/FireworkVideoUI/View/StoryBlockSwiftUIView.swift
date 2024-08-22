@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  StoryBlockSwiftUIView.swift
 //
 //  Created by linjie jiang on 8/14/24.
 //
@@ -14,10 +14,24 @@ public struct StoryBlockHandler {
         self.storyBlockVC = storyBlockVC
     }
 
+    /**
+     Resumes playback if the story block has been paused.
+
+     If the story block is already playing then this method performs no action.
+
+     - important: Calls to this method are ignored when the story block has entered fullscreen
+     */
     public func play() {
         storyBlockVC?.play()
     }
 
+    /**
+     Stops playback if the story block is already playing.
+
+     If the story block is already paused then this method performs no action.
+
+     - important: Calls to this method are ignored when the story block has entered fullscreen
+     */
     public func pause() {
         storyBlockVC?.pause()
     }
@@ -25,6 +39,9 @@ public struct StoryBlockHandler {
 
 public typealias GetStoryBlockHandlerClosure = (_ handler: StoryBlockHandler) -> Void
 
+/**
+ The `StoryBlockSwiftUIView` provides a SwiftUI View wrapper of the `FireworkVideo.StoryBlockViewController`. You can customize the `StoryBlockSwiftUIView` just like the `FireworkVideo.StoryBlockViewController`.
+ */
 public struct StoryBlockSwiftUIView: UIViewControllerRepresentable {
     public typealias UIViewControllerType = StoryBlockViewController
 
@@ -91,6 +108,22 @@ public struct StoryBlockSwiftUIView: UIViewControllerRepresentable {
     private let onGetFeedID: GetFeedIDClosure?
     private let onGetStoryBlockHandler: GetStoryBlockHandlerClosure?
 
+    /// Initializes StoryBlockSwiftUIView.
+    /// - Parameters:
+    ///   - source: The story block content source. Defaults to `.discover`.
+    ///   - adConfiguration: The ad configuration. See `AdConfiguration` default values.
+    ///   - viewConfiguration: The video configuration for the story block.
+    ///   - isPictureInPictureEnabled: Indicate whether pip is enabled.
+    ///   - onStoryBlockLoaded: Called when the story block is loaded.
+    ///   - onStoryBlockFailedToLoad: Called when the story block loading fails.
+    ///   - onPipDidStart: Called when the pip will start.
+    ///   - onPipDidStart: Called after the pip started.
+    ///   - onPipFailedToStart: Called when pip failed to start.
+    ///   - onPipWillStop: Called when the pip will stop.
+    ///   - onPipDidStop: Called after the pip stopped.
+    ///   - onPipRestoreUserInterface: Host app could set this closure to restore the user interface before Picture in Picture stops.
+    ///   - onGetFeedID: Host app could get feed using this closure.
+    ///   - onGetStoryBlockHandler: Host app could get `StoryBlockHandler` using this closure.
     public init(
         source: StoryBlockContentSource = .discover,
         adConfiguration: AdConfiguration = AdConfiguration(),
