@@ -22,7 +22,7 @@ https://github.com/loopsocial/firework_ios_sdk_ui_extensions/
 
 ### Cocoapods
 
-In your Podfile add FireworkVideoUI: `pod FireworkVideoUI` and then run `pod install`.
+Add `pod FireworkVideoUI` in your Podfile and then run `pod install`.
 
 ### Copy & Paste
 
