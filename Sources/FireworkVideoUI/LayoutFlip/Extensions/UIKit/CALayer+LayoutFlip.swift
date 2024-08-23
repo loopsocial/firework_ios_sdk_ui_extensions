@@ -45,7 +45,7 @@ extension CALayer {
                 == newBasicTransformValue {
                 return
             }
-            
+
             let currentAffineTransform = self.affineTransform()
             objc_setAssociatedObject(
                 self,

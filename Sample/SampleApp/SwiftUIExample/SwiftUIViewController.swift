@@ -13,7 +13,7 @@ import FireworkVideoUI
 struct SwiftUIListView: View {
     var body: some View {
         List {
-            Text("Non-feed Cell").frame(height: 100)
+            Spacer()
             VideoFeedSwiftUIView(
                 source: .channelPlaylist(channelID: "bJDywZ", playlistID: "g206q5"),
                 viewConfiguration: getVideoFeedContentConfiguration(),
@@ -22,10 +22,10 @@ struct SwiftUIListView: View {
                     debugPrint("Video feed loaded successfully.")
                 },
                 onVideoFeedFailedToLoad: { error in
-                    debugPrint("Video feed did fail loading with error: \(error.localizedDescription)")
+                    debugPrint("Video feed did fail loading")
                 }
             ).frame(height: 240)
-            Text("Non-feed Cell").frame(height: 100)
+            Spacer()
             StoryBlockSwiftUIView(
                 source: .channel(channelID: "bJDywZ"),
                 viewConfiguration: getStoryBlockConfiguration(),
@@ -37,6 +37,7 @@ struct SwiftUIListView: View {
                     debugPrint("Story block did fail loading with error: \(error.localizedDescription)")
                 }
             ).frame(height: 500)
+            Spacer()
         }
     }
 

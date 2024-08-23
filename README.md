@@ -44,15 +44,38 @@ can be accomplished with these extensions.
 The `VideoFeedView` provides a `UIView` wrapper of the `FireworkVideo.VideoFeedViewController`. You can customize the `VideoFeedView` just like the `FireworkVideo.VideoFeedViewController`.
 
 ```swift
+import UIKit
 import FireworkVideo
 import FireworkVideoUI
 
-let videoFeedView = VideoFeedView(source: source)
-videoFeedView.delegate = self
-var viewConfiguration = VideoFeedContentConfiguration()
-viewConfiguration.itemView.autoplay.isEnabled = true
-viewConfiguration.playerView.playbackButton.isHidden = false
-videoFeedView.viewConfiguration = viewConfiguration
+class ViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.addVideoFeedView()
+    }
+
+    func addVideoFeedView() {
+        let videoFeedView = VideoFeedView(source: .discover)
+        videoFeedView.viewConfiguration = getVideoFeedContentConfiguration()
+
+        videoFeedView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(videoFeedView)
+
+        NSLayoutConstraint.activate([
+            videoFeedView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            videoFeedView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            videoFeedView.heightAnchor.constraint(equalToConstant: 240),
+            videoFeedView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+    }
+
+    func getVideoFeedContentConfiguration() -> VideoFeedContentConfiguration {
+        var viewConfiguration = VideoFeedContentConfiguration()
+        viewConfiguration.itemView.autoplay.isEnabled = true
+        viewConfiguration.playerView.playbackButton.isHidden = false
+        return viewConfiguration
+    }
+}
 ```
 
 ## StoryBlockView
@@ -60,65 +83,112 @@ videoFeedView.viewConfiguration = viewConfiguration
 The `StoryBlockView` provides a `UIView` wrapper of the `FireworkVideo.StoryBlockViewController`. You can customize the `StoryBlockView` just like the `FireworkVideo.StoryBlockViewController`.
 
 ```swift
+import UIKit
 import FireworkVideo
 import FireworkVideoUI
 
-let storyBlockView = StoryBlockView(source: source)
-storyBlockView.delegate = self
-var viewConfiguration = StoryBlockConfiguration()
-viewConfiguration.playbackButton.isHidden = false
-viewConfiguration.fullScreenPlayerView.playbackButton.isHidden = false
-storyBlockView.viewConfiguration = viewConfiguration
+class ViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.addStoryBlockView()
+    }
+
+    func addStoryBlockView() {
+        let storyBlockView = StoryBlockView(source: .discover)
+        storyBlockView.viewConfiguration = getStoryBlockConfiguration()
+
+        storyBlockView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(storyBlockView)
+
+        NSLayoutConstraint.activate([
+            storyBlockView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            storyBlockView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            storyBlockView.heightAnchor.constraint(equalToConstant: 500),
+            storyBlockView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+    }
+
+    func getStoryBlockConfiguration() -> StoryBlockConfiguration {
+        var viewConfiguration = StoryBlockConfiguration()
+        viewConfiguration.playbackButton.isHidden = false
+        viewConfiguration.fullScreenPlayerView.playbackButton.isHidden = false
+        return viewConfiguration
+    }
+}
 ```
 
 ## VideoFeedSwiftUIView
 
-The `VideoFeedSwiftUIView` provides a SwiftUI View wrapper of the `FireworkVideo.VideoFeedViewController`. You can customize the `VideoFeedSwiftUIView` just like the `FireworkVideo.VideoFeedViewController`.
+The `VideoFeedSwiftUIView` provides a SwiftUI View wrapper for the `FireworkVideo.VideoFeedViewController`. You can customize the `VideoFeedSwiftUIView` just like the `FireworkVideo.VideoFeedViewController`.
 
 ```swift
+import SwiftUI
 import FireworkVideo
 import FireworkVideoUI
 
-var viewConfiguration = VideoFeedContentConfiguration()
-viewConfiguration.itemView.autoplay.isEnabled = true
-viewConfiguration.playerView.playbackButton.isHidden = false
+struct ContentView: View {
+    var body: some View {
+        List {
+            Spacer()
+            VideoFeedSwiftUIView(
+                source: .discover,
+                viewConfiguration: getVideoFeedContentConfiguration(),
+                isPictureInPictureEnabled: true,
+                onVideoFeedLoaded: {
+                    debugPrint("Video feed loaded successfully.")
+                },
+                onVideoFeedFailedToLoad: { error in
+                    debugPrint("Video feed did fail loading.")
+                }
+            ).frame(height: 240)
+            Spacer()
+        }
+    }
 
-VideoFeedSwiftUIView(
-  source: .channelPlaylist(channelID: "bJDywZ", playlistID: "g206q5"),
-  viewConfiguration: viewConfiguration,
-  isPictureInPictureEnabled: true,
-  onVideoFeedLoaded: {
-      debugPrint("Video feed loaded successfully.")
-  },
-  onVideoFeedFailedToLoad: { error in
-      debugPrint("Video feed did fail loading with error: \(error.localizedDescription)")
-  }
-)
+    func getVideoFeedContentConfiguration() -> VideoFeedContentConfiguration {
+        var viewConfiguration = VideoFeedContentConfiguration()
+        viewConfiguration.itemView.autoplay.isEnabled = true
+        viewConfiguration.playerView.playbackButton.isHidden = false
+        return viewConfiguration
+    }
+}
 ```
 
 ## StoryBlockSwiftUIView
 
-The `StoryBlockSwiftUIView` provides a SwiftUI View wrapper of the `FireworkVideo.StoryBlockViewController`. You can customize the `StoryBlockSwiftUIView` just like the `FireworkVideo.StoryBlockViewController`.
+The `StoryBlockSwiftUIView` provides a SwiftUI View wrapper for the `FireworkVideo.StoryBlockViewController`. You can customize the `StoryBlockSwiftUIView` just like the `FireworkVideo.StoryBlockViewController`.
 
 ```swift
+import SwiftUI
 import FireworkVideo
 import FireworkVideoUI
 
-var viewConfiguration = StoryBlockConfiguration()
-viewConfiguration.playbackButton.isHidden = false
-viewConfiguration.fullScreenPlayerView.playbackButton.isHidden = false
+struct ContentView: View {
+    var body: some View {
+        List {
+            Spacer()
+            StoryBlockSwiftUIView(
+                source: .discover,
+                viewConfiguration: getStoryBlockConfiguration(),
+                isPictureInPictureEnabled: true,
+                onStoryBlockLoaded: {
+                    debugPrint("Story block loaded successfully.")
+                },
+                onStoryBlockFailedToLoad: { error in
+                    debugPrint("Story block did fail loading.")
+                }
+            ).frame(height: 500)
+            Spacer()
+        }
+    }
 
-StoryBlockSwiftUIView(
-  source: .channel(channelID: "bJDywZ"),
-  viewConfiguration: getStoryBlockConfiguration(),
-  isPictureInPictureEnabled: true,
-  onStoryBlockLoaded: {
-      debugPrint("Story block loaded successfully.")
-  },
-  onStoryBlockFailedToLoad: { error in
-      debugPrint("Story block did fail loading with error: \(error.localizedDescription)")
-  }
-)
+    func getStoryBlockConfiguration() -> StoryBlockConfiguration {
+        var viewConfiguration = StoryBlockConfiguration()
+        viewConfiguration.playbackButton.isHidden = false
+        viewConfiguration.fullScreenPlayerView.playbackButton.isHidden = false
+        return viewConfiguration
+    }
+}
 ```
 
 ## App-level language setting

@@ -31,11 +31,11 @@ public struct VideoFeedHandler {
 public typealias GetVideoFeedHandlerClosure = (_ handler: VideoFeedHandler) -> Void
 
 /**
- The `VideoFeedSwiftUIView` provides a SwiftUI View wrapper of the `FireworkVideo.VideoFeedViewController`. You can customize the `VideoFeedSwiftUIView` just like the `FireworkVideo.VideoFeedViewController`.
+ The `VideoFeedSwiftUIView` provides a SwiftUI View wrapper for the `FireworkVideo.VideoFeedViewController`.
+ You can customize the `VideoFeedSwiftUIView` just like the `FireworkVideo.VideoFeedViewController`.
  */
 public struct VideoFeedSwiftUIView: UIViewControllerRepresentable {
     public typealias UIViewControllerType = VideoFeedViewController
-
 
     public class Coordinator: VideoFeedViewControllerDelegate, PictureInPictureControllerDelegate {
         let parent: VideoFeedSwiftUIView

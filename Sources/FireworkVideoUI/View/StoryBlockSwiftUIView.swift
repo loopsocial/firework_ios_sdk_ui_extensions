@@ -40,7 +40,8 @@ public struct StoryBlockHandler {
 public typealias GetStoryBlockHandlerClosure = (_ handler: StoryBlockHandler) -> Void
 
 /**
- The `StoryBlockSwiftUIView` provides a SwiftUI View wrapper of the `FireworkVideo.StoryBlockViewController`. You can customize the `StoryBlockSwiftUIView` just like the `FireworkVideo.StoryBlockViewController`.
+ The `StoryBlockSwiftUIView` provides a SwiftUI View wrapper for the `FireworkVideo.StoryBlockViewController`.
+ You can customize the `StoryBlockSwiftUIView` just like the `FireworkVideo.StoryBlockViewController`.
  */
 public struct StoryBlockSwiftUIView: UIViewControllerRepresentable {
     public typealias UIViewControllerType = StoryBlockViewController
@@ -60,7 +61,7 @@ public struct StoryBlockSwiftUIView: UIViewControllerRepresentable {
         ) {
             parent.onStoryBlockLoaded?()
         }
-        
+
         public func storyBlock(
             _ viewController: StoryBlockViewController,
             didFailToLoadFeed error: StoryBlockError
