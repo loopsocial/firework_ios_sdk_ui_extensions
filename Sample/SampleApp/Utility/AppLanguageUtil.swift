@@ -9,7 +9,7 @@ import Foundation
 
 private let appLanguageNameStorageKey = "sample_app_language_name_storage_key"
 
-class AppLanguageUtil {
+public class AppLanguageUtil {
     public static let shared = AppLanguageUtil()
     private init() {}
     

@@ -1,15 +1,17 @@
 //
-//  TableViewController.swift
+//  TableViewController2.swift
 //  SampleApp
 //
-//  Created by Luke Davis on 9/1/22.
+//  Created by linjie jiang on 8/16/24.
 //
 
 import UIKit
 import FireworkVideo
 import FireworkVideoUI
 
-class TableViewController: UITableViewController {
+class TableViewController2: UITableViewController {
+    let videoFeedViewCache = VideoFeedViewCache(capacity: 3)
+    let storyBlockViewCache = StoryBlockViewCache(capacity: 2)
 
     enum Item {
         case text(String)
@@ -37,12 +39,12 @@ class TableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(
-            VideoFeedViewTableViewCell.self,
-            forCellReuseIdentifier: VideoFeedViewTableViewCell.id
+            VideoFeedViewTableViewCell2.self,
+            forCellReuseIdentifier: VideoFeedViewTableViewCell2.id
         )
         tableView.register(
-            StoryBlockTableViewCell.self,
-            forCellReuseIdentifier: StoryBlockTableViewCell.id
+            StoryBlockViewTableViewCell2.self,
+            forCellReuseIdentifier: StoryBlockViewTableViewCell2.id
         )
         tableView.register(
             LabelTableViewCell.self,
@@ -76,15 +78,15 @@ class TableViewController: UITableViewController {
             textCell.textLabel?.text = text
             return textCell
         case .videoFeed(let source):
-            let videoFeedCell = tableView.dequeueReusableCell(withIdentifier: VideoFeedViewTableViewCell.id, for: indexPath) as! VideoFeedViewTableViewCell
-            videoFeedCell.updateSourceAndIndexPath(source: source, indexPath: indexPath)
+            let videoFeedCell = tableView.dequeueReusableCell(withIdentifier: VideoFeedViewTableViewCell2.id, for: indexPath) as! VideoFeedViewTableViewCell2
+            let videoFeedView = videoFeedViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
+            videoFeedCell.videoFeedView = videoFeedView
             return videoFeedCell
         case .storyBlock(let source):
-            let storyBlockCell = tableView.dequeueReusableCell(withIdentifier: StoryBlockTableViewCell.id, for: indexPath) as! StoryBlockTableViewCell
-            storyBlockCell.updateSourceAndIndexPath(source: source, indexPath: indexPath)
+            let storyBlockCell = tableView.dequeueReusableCell(withIdentifier: StoryBlockViewTableViewCell2.id, for: indexPath) as! StoryBlockViewTableViewCell2
+            let storyBlockView = storyBlockViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
+            storyBlockCell.storyBlockView = storyBlockView
             return storyBlockCell
         }
     }
 }
-
-

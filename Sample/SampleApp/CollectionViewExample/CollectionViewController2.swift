@@ -1,15 +1,18 @@
 //
-//  CollectionViewController.swift
+//  CollectionViewController2.swift
 //  SampleApp
 //
-//  Created by Luke Davis on 9/1/22.
+//  Created by linjie jiang on 8/16/24.
 //
 
 import UIKit
 import FireworkVideo
 import FireworkVideoUI
 
-class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class CollectionViewController2: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    let videoFeedViewCache = VideoFeedViewCache(capacity: 5)
+    let storyBlockViewCache = StoryBlockViewCache(capacity: 2)
+
     enum Item {
         case text(String)
         case videoFeed(VideoFeedContentSource)
@@ -33,12 +36,12 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(
-            VideoFeedCollectionViewCell.self,
-            forCellWithReuseIdentifier: VideoFeedCollectionViewCell.id
+            VideoFeedCollectionViewCell2.self,
+            forCellWithReuseIdentifier: VideoFeedCollectionViewCell2.id
         )
         collectionView.register(
-            StoryBlockCollectionViewCell.self,
-            forCellWithReuseIdentifier: StoryBlockCollectionViewCell.id
+            StoryBlockViewCollectionViewCell2.self,
+            forCellWithReuseIdentifier: StoryBlockViewCollectionViewCell2.id
         )
         collectionView.register(
             LabelCollectionViewCell.self,
@@ -72,12 +75,14 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             textCell.text = text
             return textCell
         case .videoFeed(let source):
-            let videoFeedCell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoFeedCollectionViewCell.id, for: indexPath) as! VideoFeedCollectionViewCell
-            videoFeedCell.updateSourceAndIndexPath(source: source, indexPath: indexPath)
+            let videoFeedCell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoFeedCollectionViewCell2.id, for: indexPath) as! VideoFeedCollectionViewCell2
+            let videoFeedView = videoFeedViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
+            videoFeedCell.videoFeedView = videoFeedView
             return videoFeedCell
         case .storyBlock(let source):
-            let storyBlockCell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryBlockCollectionViewCell.id, for: indexPath) as! StoryBlockCollectionViewCell
-            storyBlockCell.updateSourceAndIndexPath(source: source, indexPath: indexPath)
+            let storyBlockCell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryBlockViewCollectionViewCell2.id, for: indexPath) as! StoryBlockViewCollectionViewCell2
+            let storyBlockView = storyBlockViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
+            storyBlockCell.storyBlockView = storyBlockView
             return storyBlockCell
         }
     }
