@@ -1,14 +1,16 @@
 {
-  "pins" : [
-    {
-      "identity" : "firework_ios_sdk",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/loopsocial/firework_ios_sdk.git",
-      "state" : {
-        "revision" : "bdcd93d20dfbba41e69fe19afb5b37e90f07581e",
-        "version" : "1.24.0"
+  "object": {
+    "pins": [
+      {
+        "package": "FireworkVideo",
+        "repositoryURL": "https://github.com/loopsocial/firework_ios_sdk.git",
+        "state": {
+          "branch": null,
+          "revision": "9899acad99b0cd35b1eea0a938fecf2f021fbf0a",
+          "version": "1.24.2"
+        }
       }
-    }
-  ],
-  "version" : 2
+    ]
+  },
+  "version": 1
 }

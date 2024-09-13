@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'FireworkVideoUI'
-  s.version      = '0.2.0'
+  s.version      = '0.2.1'
   s.summary      = 'An extension library meant to provide easier interfaces for the FireworkVideoSDK.'
   s.homepage     = 'https://github.com/loopsocial/firework_ios_sdk_ui_extensions'
   s.license      = 'Apache License, Version 2.0'
@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
   s.swift_version = '5.3'
   s.source_files = 'Sources/**/*.{swift}'
 
-  s.dependency 'FireworkVideo'
+  s.dependency 'FireworkVideo', '~> 1.24.0'
 end
