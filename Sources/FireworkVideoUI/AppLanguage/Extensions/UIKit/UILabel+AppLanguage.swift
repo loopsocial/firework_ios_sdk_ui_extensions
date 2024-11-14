@@ -79,7 +79,11 @@ extension UILabel {
                     return .right
                 }
             } else if layoutDirection == .ltr {
-                return .left
+                if textAlignment == .center {
+                    return textAlignment
+                } else {
+                    return .left
+                }
             }
         } else {
             return textAlignment
