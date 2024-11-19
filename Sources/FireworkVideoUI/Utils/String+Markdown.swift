@@ -9,69 +9,69 @@ import Foundation
 
 public extension String {
     func parseMarkdown() -> String {
-        var resultMarkdownText = self
+        var result = self
         // markdown unordered item
-        resultMarkdownText = resultMarkdownText.replacingOccurrences(of: "\n- ", with: "\n&nbsp;&nbsp;• ")
-        resultMarkdownText = resultMarkdownText.replacingOccurrences(of: "\n* ", with: "\n&nbsp;&nbsp;• ")
+        result = result.replacingOccurrences(of: "\n- ", with: "\n&nbsp;&nbsp;• ")
+        result = result.replacingOccurrences(of: "\n* ", with: "\n&nbsp;&nbsp;• ")
         // markdown ordered item
-        resultMarkdownText = parse(
-            resultMarkdownText,
+        result = parse(
+            result,
             pattern: "\n(\\d+?)\\. ",
             createReplaceContent: { content in
                 "\n&nbsp;&nbsp;\(content). "
             }
         )
         // markdown strikethrough
-        resultMarkdownText = parse(
-            resultMarkdownText,
+        result = parse(
+            result,
             pattern: "~~(.+?)~~",
             createReplaceContent: { content in
                 "<del>\(content)</del>"
             }
         )
         // markdown strong
-        resultMarkdownText = parse(
-            resultMarkdownText,
+        result = parse(
+            result,
             pattern: "\\*\\*(.+?)\\*\\*",
             createReplaceContent: { content in
                 "<strong>\(content)</strong>"
             }
         )
         // markdown italic
-        resultMarkdownText = parse(
-            resultMarkdownText,
+        result = parse(
+            result,
             pattern: "\\*(.+)\\*",
             createReplaceContent: { content in
                 "<em>\(content)</em>"
             }
         )
         // markdown h1
-        resultMarkdownText = parse(
-            resultMarkdownText,
+        result = parse(
+            result,
             pattern: "\n# (.+)(?=($|\n))",
             createReplaceContent: { content in
                 "\n<h1>\(content)</h1>"
             }
         )
         // markdown h2
-        resultMarkdownText = parse(
-            resultMarkdownText,
+        result = parse(
+            result,
             pattern: "\n## (.+)(?=($|\n))",
             createReplaceContent: { content in
                 "\n<h2>\(content)</h2>"
             }
         )
         // markdown h3
-        resultMarkdownText = parse(
-            resultMarkdownText,
+        result = parse(
+            result,
             pattern: "\n### (.+?)(?=($|\n))",
             createReplaceContent: { content in
                 "\n<h3>\(content)</h3>"
             }
         )
-        resultMarkdownText = parseMarkdownLink(resultMarkdownText)
-        resultMarkdownText = resultMarkdownText.replacingOccurrences(of: "\n", with: "<br />")
-        return resultMarkdownText
+        result = parseMarkdownLink(result)
+        result = result.replacingOccurrences(of: "\n", with: "<br />")
+        return result
     }
 
     private func parse(
