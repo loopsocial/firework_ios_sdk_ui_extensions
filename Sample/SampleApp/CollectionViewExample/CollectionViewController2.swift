@@ -21,7 +21,7 @@ class CollectionViewController2: UICollectionViewController, UICollectionViewDel
 
     lazy var items: [Item] = [
         .text("Non-feed Cell"),
-        .videoFeed(.discover),
+        .videoFeed(.channel(channelID: "bJDywZ")),
         .text("Non-feed Cell"),
         .videoFeed(.channelPlaylist(channelID: "bJDywZ", playlistID: "g206q5")),
         .text("Non-feed Cell"),
@@ -76,12 +76,18 @@ class CollectionViewController2: UICollectionViewController, UICollectionViewDel
             return textCell
         case .videoFeed(let source):
             let videoFeedCell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoFeedCollectionViewCell2.id, for: indexPath) as! VideoFeedCollectionViewCell2
-            let videoFeedView = videoFeedViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
+            let videoFeedView = videoFeedViewCache.getOrCreateVideoFeedView(
+                source: source,
+                indexPath: indexPath
+            )
             videoFeedCell.videoFeedView = videoFeedView
             return videoFeedCell
         case .storyBlock(let source):
             let storyBlockCell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryBlockViewCollectionViewCell2.id, for: indexPath) as! StoryBlockViewCollectionViewCell2
-            let storyBlockView = storyBlockViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
+            let storyBlockView = storyBlockViewCache.getOrCreateVideoFeedView(
+                source: source,
+                indexPath: indexPath
+            )
             storyBlockCell.storyBlockView = storyBlockView
             return storyBlockCell
         }
