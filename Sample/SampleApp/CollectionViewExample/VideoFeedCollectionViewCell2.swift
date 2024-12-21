@@ -57,13 +57,13 @@ extension VideoFeedCollectionViewCell2: VideoFeedViewControllerDelegate {
     func videoFeedDidLoadFeed(
         _ viewController: VideoFeedViewController
     ) {
-
+        debugPrint("Video feed loaded successfully.")
     }
 
     func videoFeed(
         _ viewController: VideoFeedViewController,
         didFailToLoadFeed error: VideoFeedError
     ) {
-
+        debugPrint("Video feed did fail loading with error: \(error.localizedDescription)")
     }
 }

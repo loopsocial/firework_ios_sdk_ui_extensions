@@ -17,11 +17,14 @@ public class VideoFeedViewCache {
 
     public func getOrCreateVideoFeedView(
         source: VideoFeedContentSource,
-        indexPath: IndexPath,
+        indexPath: IndexPath? = nil,
         layout: VideoFeedLayout = VideoFeedHorizontalLayout(),
         adConfiguration: AdConfiguration = AdConfiguration()
     ) -> VideoFeedView {
-        let cacheKey = "\(source.cacheKey)_\(indexPath.cacheKey)"
+        var cacheKey = "\(source.cacheKey)"
+        if let indexPath = indexPath {
+            cacheKey += "_\(indexPath.cacheKey)"
+        }
         if let videoFeedView = lruCache.get(cacheKey) {
             return videoFeedView
         }

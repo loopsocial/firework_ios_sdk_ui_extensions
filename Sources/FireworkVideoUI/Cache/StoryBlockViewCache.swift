@@ -17,10 +17,13 @@ public class StoryBlockViewCache {
 
     public func getOrCreateVideoFeedView(
         source: StoryBlockContentSource,
-        indexPath: IndexPath,
+        indexPath: IndexPath? = nil,
         adConfiguration: AdConfiguration = AdConfiguration()
     ) -> StoryBlockView {
-        let cacheKey = "\(source.cacheKey)_\(indexPath.cacheKey)"
+        var cacheKey = "\(source.cacheKey)"
+        if let indexPath = indexPath {
+            cacheKey += "_\(indexPath.cacheKey)"
+        }
         if let storyBlockView = lruCache.get(cacheKey) {
             return storyBlockView
         }

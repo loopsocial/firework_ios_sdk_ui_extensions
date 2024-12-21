@@ -57,13 +57,13 @@ extension StoryBlockViewCollectionViewCell2: StoryBlockViewControllerDelegate {
     func storyBlockDidLoadFeed(
         _ viewController: StoryBlockViewController
     ) {
-
+        debugPrint("Story block loaded successfully.")
     }
 
     func storyBlock(
         _ viewController: StoryBlockViewController,
         didFailToLoadFeed error: StoryBlockError
     ) {
-
+        debugPrint("Story block did fail loading with error: \(error.localizedDescription)")
     }
 }
