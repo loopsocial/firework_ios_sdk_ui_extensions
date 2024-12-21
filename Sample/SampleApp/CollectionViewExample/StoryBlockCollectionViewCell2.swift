@@ -12,25 +12,7 @@ import FireworkVideoUI
 class StoryBlockViewCollectionViewCell2: UICollectionViewCell {
     static let id = "\(StoryBlockViewCollectionViewCell2.self)"
 
-    var source: StoryBlockContentSource?
-    var indexPath: IndexPath?
-
-    var storyBlockView: StoryBlockView? {
-        didSet {
-            if storyBlockView != oldValue {
-                if let oldStoryBlockView = oldValue,
-                   oldStoryBlockView.superview == self.contentView {
-                    oldStoryBlockView.removeFromSuperview()
-                }
-                updateStoryBlockView()
-            }
-        }
-    }
-
-    private func updateStoryBlockView() {
-        guard let storyBlockView = storyBlockView else {
-            return
-        }
+    func embed(_ storyBlockView: StoryBlockView) {
         storyBlockView.delegate = self
         var viewConfiguration = StoryBlockConfiguration()
         viewConfiguration.playbackButton.isHidden = false
@@ -42,14 +24,17 @@ class StoryBlockViewCollectionViewCell2: UICollectionViewCell {
             if storyBlockView.superview != nil {
                 storyBlockView.removeFromSuperview()
             }
+            for subview in contentView.subviews where subview is StoryBlockView {
+                subview.removeFromSuperview()
+            }
             contentView.addSubview(storyBlockView)
+            NSLayoutConstraint.activate([
+                storyBlockView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+                storyBlockView.topAnchor.constraint(equalTo: contentView.topAnchor),
+                storyBlockView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+                storyBlockView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            ])
         }
-        NSLayoutConstraint.activate([
-            storyBlockView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            storyBlockView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            storyBlockView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            storyBlockView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-        ])
     }
 }
 

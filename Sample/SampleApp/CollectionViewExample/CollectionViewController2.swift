@@ -80,7 +80,7 @@ class CollectionViewController2: UICollectionViewController, UICollectionViewDel
                 source: source,
                 indexPath: indexPath
             )
-            videoFeedCell.videoFeedView = videoFeedView
+            videoFeedCell.embed(videoFeedView)
             return videoFeedCell
         case .storyBlock(let source):
             let storyBlockCell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryBlockViewCollectionViewCell2.id, for: indexPath) as! StoryBlockViewCollectionViewCell2
@@ -88,7 +88,7 @@ class CollectionViewController2: UICollectionViewController, UICollectionViewDel
                 source: source,
                 indexPath: indexPath
             )
-            storyBlockCell.storyBlockView = storyBlockView
+            storyBlockCell.embed(storyBlockView)
             return storyBlockCell
         }
     }
