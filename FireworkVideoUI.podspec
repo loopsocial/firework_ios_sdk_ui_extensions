@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'FireworkVideoUI'
-  s.version      = '0.2.7'
+  s.version      = '0.2.8'
   s.summary      = 'An extension library meant to provide easier interfaces for the FireworkVideoSDK.'
   s.homepage     = 'https://github.com/loopsocial/firework_ios_sdk_ui_extensions'
   s.license      = 'Apache License, Version 2.0'
