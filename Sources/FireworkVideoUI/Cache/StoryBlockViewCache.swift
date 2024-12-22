@@ -15,7 +15,7 @@ public class StoryBlockViewCache {
         self.lruCache = LRUCache<String, StoryBlockView>(capacity: capacity)
     }
 
-    public func getOrCreateVideoFeedView(
+    public func getOrCreateStoryBlockView(
         source: StoryBlockContentSource,
         indexPath: IndexPath? = nil,
         adConfiguration: AdConfiguration = AdConfiguration()

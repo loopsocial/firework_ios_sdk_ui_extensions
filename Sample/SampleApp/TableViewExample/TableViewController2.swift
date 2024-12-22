@@ -87,7 +87,7 @@ class TableViewController2: UITableViewController {
             return videoFeedCell
         case .storyBlock(let source):
             let storyBlockCell = tableView.dequeueReusableCell(withIdentifier: StoryBlockViewTableViewCell2.id, for: indexPath) as! StoryBlockViewTableViewCell2
-            let storyBlockView = storyBlockViewCache.getOrCreateVideoFeedView(
+            let storyBlockView = storyBlockViewCache.getOrCreateStoryBlockView(
                 source: source, indexPath: indexPath
             )
             storyBlockCell.storyBlockView = storyBlockView

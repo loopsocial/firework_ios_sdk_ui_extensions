@@ -84,7 +84,7 @@ class CollectionViewController2: UICollectionViewController, UICollectionViewDel
             return videoFeedCell
         case .storyBlock(let source):
             let storyBlockCell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryBlockViewCollectionViewCell2.id, for: indexPath) as! StoryBlockViewCollectionViewCell2
-            let storyBlockView = storyBlockViewCache.getOrCreateVideoFeedView(
+            let storyBlockView = storyBlockViewCache.getOrCreateStoryBlockView(
                 source: source,
                 indexPath: indexPath
             )
