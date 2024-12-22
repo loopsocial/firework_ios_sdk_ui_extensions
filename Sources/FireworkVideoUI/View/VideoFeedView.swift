@@ -51,9 +51,10 @@ public class VideoFeedView: UIView {
         set { feedViewController.pictureInPictureDelegate = newValue }
     }
 
-//    public var loadResult: VideoFeedLoadResult? {
-//        feedViewController.loadResult
-//    }
+    /// The load result of the video feed.
+    public var loadResult: VideoFeedLoadResult? {
+        feedViewController.loadResult
+    }
 
     private let feedViewController: VideoFeedViewController
 

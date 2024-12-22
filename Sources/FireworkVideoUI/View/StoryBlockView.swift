@@ -45,9 +45,10 @@ public class StoryBlockView: UIView {
         set { storyBlockViewController.pictureInPictureDelegate = newValue }
     }
 
-//    public var loadResult: StoryBlockLoadResult? {
-//        storyBlockViewController.loadResult
-//    }
+    /// The load result of the story block.
+    public var loadResult: StoryBlockLoadResult? {
+        storyBlockViewController.loadResult
+    }
 
     private let storyBlockViewController: StoryBlockViewController
 
