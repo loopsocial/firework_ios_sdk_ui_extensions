@@ -99,6 +99,16 @@ public class StoryBlockView: UIView {
         storyBlockViewController.pause()
     }
 
+    public func onViewportEntered() {
+        storyBlockViewController.beginAppearanceTransition(true, animated: false)
+        storyBlockViewController.endAppearanceTransition()
+    }
+
+    public func onViewportLeft() {
+        storyBlockViewController.beginAppearanceTransition(false, animated: false)
+        storyBlockViewController.endAppearanceTransition()
+    }
+
     public override func layoutSubviews() {
         super.layoutSubviews()
         embed()

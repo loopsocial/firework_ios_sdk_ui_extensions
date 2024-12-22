@@ -92,4 +92,16 @@ class CollectionViewController2: UICollectionViewController, UICollectionViewDel
             return storyBlockCell
         }
     }
+
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let storyBlockCell = cell as? StoryBlockViewCollectionViewCell2 {
+            storyBlockCell.getStoryBlockView()?.onViewportEntered()
+        }
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let storyBlockCell = cell as? StoryBlockViewCollectionViewCell2 {
+            storyBlockCell.getStoryBlockView()?.onViewportLeft()
+        }
+    }
 }

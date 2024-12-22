@@ -36,6 +36,10 @@ class StoryBlockViewCollectionViewCell2: UICollectionViewCell {
             ])
         }
     }
+
+    func getStoryBlockView() -> StoryBlockView? {
+        return contentView.subviews.first(where: { $0 is StoryBlockView }) as? StoryBlockView
+    }
 }
 
 extension StoryBlockViewCollectionViewCell2: StoryBlockViewControllerDelegate {
