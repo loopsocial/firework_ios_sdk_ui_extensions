@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/loopsocial/firework_ios_sdk.git",
         "state": {
           "branch": null,
-          "revision": "e9e045c608d98ee4db42329db0b7c7ee8367e618",
-          "version": "1.27.3"
+          "revision": "e7641e23f2128d5b436240177ebbbcca09f9d7ea",
+          "version": "1.28.0"
         }
       }
     ]
