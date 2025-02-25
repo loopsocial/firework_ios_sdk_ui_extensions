@@ -42,6 +42,8 @@ class VideoFeedCollectionViewCell: UICollectionViewCell {
         videoFeedView.delegate = self
         var viewConfiguration = VideoFeedContentConfiguration()
         viewConfiguration.itemView.autoplay.isEnabled = true
+        viewConfiguration.itemView.title.isHidden = false
+        viewConfiguration.itemView.titleLayoutConfiguration.titlePosition = .nested
         viewConfiguration.playerView.playbackButton.isHidden = false
         videoFeedView.viewConfiguration = viewConfiguration
 

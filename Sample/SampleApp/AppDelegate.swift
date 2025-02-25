@@ -15,9 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FireworkVideoSDK.initializeSDK()
-        
+
         let languageName = AppLanguageUtil.shared.getCachedAppLanguageName() ?? "System"
         let language = AppLanguageUtil.shared.getLanguageFromName(name: languageName)
+        if language == "ar" {
+            UIView.appearance().semanticContentAttribute = .forceRightToLeft
+        } else {
+            UIView.appearance().semanticContentAttribute = .forceLeftToRight
+        }
         AppLanguageManager.shared.changeAppLanguage(language)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.requestIDFAPermision()
