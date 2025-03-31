@@ -274,3 +274,11 @@ extension UIView {
         }
     }
 }
+
+public extension UIView {
+    func flipIfNeeded() {
+        if AppLanguageManager.shared.shouldHorizontalFlip {
+            self.viewType = .flip
+        }
+    }
+}

@@ -21,7 +21,7 @@ class TableViewController2: UITableViewController {
 
     lazy var items: [Item] = [
         .text("Non-feed Cell"),
-        .videoFeed(.discover),
+        .videoFeed(.channel(channelID: "bJDywZ")),
         .text("Non-feed Cell"),
         .text("Non-feed Cell"),
         .videoFeed(.channelPlaylist(channelID: "bJDywZ", playlistID: "g206q5")),
@@ -79,12 +79,17 @@ class TableViewController2: UITableViewController {
             return textCell
         case .videoFeed(let source):
             let videoFeedCell = tableView.dequeueReusableCell(withIdentifier: VideoFeedViewTableViewCell2.id, for: indexPath) as! VideoFeedViewTableViewCell2
-            let videoFeedView = videoFeedViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
+            let videoFeedView = videoFeedViewCache.getOrCreateVideoFeedView(
+                source: source,
+                indexPath: indexPath
+            )
             videoFeedCell.videoFeedView = videoFeedView
             return videoFeedCell
         case .storyBlock(let source):
             let storyBlockCell = tableView.dequeueReusableCell(withIdentifier: StoryBlockViewTableViewCell2.id, for: indexPath) as! StoryBlockViewTableViewCell2
-            let storyBlockView = storyBlockViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
+            let storyBlockView = storyBlockViewCache.getOrCreateStoryBlockView(
+                source: source, indexPath: indexPath
+            )
             storyBlockCell.storyBlockView = storyBlockView
             return storyBlockCell
         }

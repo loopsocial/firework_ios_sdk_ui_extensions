@@ -45,6 +45,11 @@ public class StoryBlockView: UIView {
         set { storyBlockViewController.pictureInPictureDelegate = newValue }
     }
 
+    /// The load result of the story block.
+    public var loadResult: StoryBlockLoadResult? {
+        storyBlockViewController.loadResult
+    }
+
     private let storyBlockViewController: StoryBlockViewController
 
     /// Initializes StoryBlockView.
@@ -92,6 +97,16 @@ public class StoryBlockView: UIView {
      */
     public func pause() {
         storyBlockViewController.pause()
+    }
+
+    public func onViewportEntered() {
+        storyBlockViewController.beginAppearanceTransition(true, animated: false)
+        storyBlockViewController.endAppearanceTransition()
+    }
+
+    public func onViewportLeft() {
+        storyBlockViewController.beginAppearanceTransition(false, animated: false)
+        storyBlockViewController.endAppearanceTransition()
     }
 
     public override func layoutSubviews() {

@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  StoryBlockViewCache.swift
 //
 //  Created by linjie jiang on 8/21/24.
 //
@@ -15,15 +15,22 @@ public class StoryBlockViewCache {
         self.lruCache = LRUCache<String, StoryBlockView>(capacity: capacity)
     }
 
-    public func getOrCreateVideoFeedView(
-        for source: StoryBlockContentSource,
-        at indexPath: IndexPath
+    public func getOrCreateStoryBlockView(
+        source: StoryBlockContentSource,
+        indexPath: IndexPath? = nil,
+        adConfiguration: AdConfiguration = AdConfiguration()
     ) -> StoryBlockView {
-        let cacheKey = "\(source.cacheKey)_\(indexPath.cacheKey)"
+        var cacheKey = "\(source.cacheKey)"
+        if let indexPath = indexPath {
+            cacheKey += "_\(indexPath.cacheKey)"
+        }
         if let storyBlockView = lruCache.get(cacheKey) {
             return storyBlockView
         }
-        let newStoryBlockView = StoryBlockView(source: source)
+        let newStoryBlockView = StoryBlockView(
+            source: source,
+            adConfiguration: adConfiguration
+        )
         lruCache.put(cacheKey, value: newStoryBlockView)
         return newStoryBlockView
     }

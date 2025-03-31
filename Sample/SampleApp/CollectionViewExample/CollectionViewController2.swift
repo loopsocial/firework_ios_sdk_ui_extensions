@@ -21,7 +21,7 @@ class CollectionViewController2: UICollectionViewController, UICollectionViewDel
 
     lazy var items: [Item] = [
         .text("Non-feed Cell"),
-        .videoFeed(.discover),
+        .videoFeed(.channel(channelID: "bJDywZ")),
         .text("Non-feed Cell"),
         .videoFeed(.channelPlaylist(channelID: "bJDywZ", playlistID: "g206q5")),
         .text("Non-feed Cell"),
@@ -76,14 +76,32 @@ class CollectionViewController2: UICollectionViewController, UICollectionViewDel
             return textCell
         case .videoFeed(let source):
             let videoFeedCell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoFeedCollectionViewCell2.id, for: indexPath) as! VideoFeedCollectionViewCell2
-            let videoFeedView = videoFeedViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
-            videoFeedCell.videoFeedView = videoFeedView
+            let videoFeedView = videoFeedViewCache.getOrCreateVideoFeedView(
+                source: source,
+                indexPath: indexPath
+            )
+            videoFeedCell.embed(videoFeedView)
             return videoFeedCell
         case .storyBlock(let source):
             let storyBlockCell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryBlockViewCollectionViewCell2.id, for: indexPath) as! StoryBlockViewCollectionViewCell2
-            let storyBlockView = storyBlockViewCache.getOrCreateVideoFeedView(for: source, at: indexPath)
-            storyBlockCell.storyBlockView = storyBlockView
+            let storyBlockView = storyBlockViewCache.getOrCreateStoryBlockView(
+                source: source,
+                indexPath: indexPath
+            )
+            storyBlockCell.embed(storyBlockView)
             return storyBlockCell
+        }
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let storyBlockCell = cell as? StoryBlockViewCollectionViewCell2 {
+            storyBlockCell.getStoryBlockView()?.onViewportEntered()
+        }
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let storyBlockCell = cell as? StoryBlockViewCollectionViewCell2 {
+            storyBlockCell.getStoryBlockView()?.onViewportLeft()
         }
     }
 }

@@ -12,25 +12,7 @@ import FireworkVideoUI
 class VideoFeedCollectionViewCell2: UICollectionViewCell {
     static let id = "\(VideoFeedCollectionViewCell2.self)"
 
-    var source: VideoFeedContentSource?
-    var indexPath: IndexPath?
-
-    var videoFeedView: VideoFeedView? {
-        didSet {
-            if videoFeedView != oldValue {
-                if let oldVideoFeedView = oldValue,
-                   oldVideoFeedView.superview == self.contentView {
-                    oldVideoFeedView.removeFromSuperview()
-                }
-                updateVideoFeedView()
-            }
-        }
-    }
-
-    private func updateVideoFeedView() {
-        guard let videoFeedView = videoFeedView else {
-            return
-        }
+    func embed(_ videoFeedView: VideoFeedView) {
         videoFeedView.delegate = self
         var viewConfiguration = VideoFeedContentConfiguration()
         viewConfiguration.itemView.autoplay.isEnabled = true
@@ -42,14 +24,17 @@ class VideoFeedCollectionViewCell2: UICollectionViewCell {
             if videoFeedView.superview != nil {
                 videoFeedView.removeFromSuperview()
             }
+            for subview in contentView.subviews where subview is VideoFeedView {
+                subview.removeFromSuperview()
+            }
             contentView.addSubview(videoFeedView)
+            NSLayoutConstraint.activate([
+                videoFeedView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+                videoFeedView.topAnchor.constraint(equalTo: contentView.topAnchor),
+                videoFeedView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+                videoFeedView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            ])
         }
-        NSLayoutConstraint.activate([
-            videoFeedView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            videoFeedView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            videoFeedView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            videoFeedView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-        ])
     }
 }
 
@@ -57,13 +42,13 @@ extension VideoFeedCollectionViewCell2: VideoFeedViewControllerDelegate {
     func videoFeedDidLoadFeed(
         _ viewController: VideoFeedViewController
     ) {
-
+        debugPrint("Video feed loaded successfully.")
     }
 
     func videoFeed(
         _ viewController: VideoFeedViewController,
         didFailToLoadFeed error: VideoFeedError
     ) {
-
+        debugPrint("Video feed did fail loading with error: \(error.localizedDescription)")
     }
 }

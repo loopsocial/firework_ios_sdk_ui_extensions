@@ -5,6 +5,7 @@
 //
 
 import UIKit
+import FireworkVideo
 
 private let appLanguageStorageKey = "firework_sdk_app_language_storage_key"
 
@@ -42,6 +43,17 @@ public class AppLanguageManager {
 
             if appLanguage != oldValue {
                 NotificationCenter.default.post(name: NotificationName.AppLanguageChanged, object: nil)
+            }
+
+            if shouldHorizontalFlip,
+                let appLanguageLayoutDirection = appLanguageLayoutDirection,
+                appLanguageLayoutDirection != .unsupported {
+                let appearanceContainerTypes = FireworkVideoSDK.getAppearanceContainerTypes()
+                for type in appearanceContainerTypes {
+                    UIView.appearance(
+                        whenContainedInInstancesOf: [type]
+                    ).semanticContentAttribute = calculateSemanticContentAttribute()
+                }
             }
         }
     }
@@ -124,6 +136,18 @@ public class AppLanguageManager {
         let cachedAppLanguage = UserDefaults.standard.object(forKey: appLanguageStorageKey) as? String
         if LanguageExtension.isValidLanguage(cachedAppLanguage) {
             self.appLanguage = cachedAppLanguage
+        }
+    }
+
+    func calculateSemanticContentAttribute() -> UISemanticContentAttribute {
+        let systemLanguageLayoutDirection = systemLanguageLayoutDirection ?? .unsupported
+        switch systemLanguageLayoutDirection {
+        case .ltr:
+            return .forceLeftToRight
+        case .rtl:
+            return .forceRightToLeft
+        case .unsupported:
+            return .unspecified
         }
     }
 

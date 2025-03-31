@@ -8,17 +8,46 @@
 import UIKit
 import FireworkVideo
 import FireworkVideoUI
+import AppTrackingTransparency
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FireworkVideoSDK.initializeSDK()
-        
+
         let languageName = AppLanguageUtil.shared.getCachedAppLanguageName() ?? "System"
         let language = AppLanguageUtil.shared.getLanguageFromName(name: languageName)
+        if language == "ar" {
+            UIView.appearance().semanticContentAttribute = .forceRightToLeft
+        } else {
+            UIView.appearance().semanticContentAttribute = .forceLeftToRight
+        }
         AppLanguageManager.shared.changeAppLanguage(language)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.requestIDFAPermision()
+        }
         return true
+    }
+
+    func requestIDFAPermision() {
+        if #available(iOS 14.5, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    debugPrint("ATT permission authorized")
+                case .denied:
+                    debugPrint("ATT permission denied")
+                case .notDetermined:
+                    debugPrint("ATT permission notDetermined")
+                case .restricted:
+                    debugPrint("ATT permission restricted")
+                    break
+                @unknown default:
+                    break
+                }
+            }
+        } else {}
     }
 
     // MARK: UISceneSession Lifecycle

@@ -31,6 +31,11 @@ class ExampleListViewController: UITableViewController {
                 }
                 
                 let language = AppLanguageUtil.shared.getLanguageFromName(name: languageName)
+                if language == "ar" {
+                    UIView.appearance().semanticContentAttribute = .forceRightToLeft
+                } else {
+                    UIView.appearance().semanticContentAttribute = .forceLeftToRight
+                }
                 AppLanguageManager.shared.changeAppLanguage(language)
                 AppLanguageUtil.shared.cacheAppLanguageName(languageName)
                 self.navigationItem.title = "Examples(\(languageName))"

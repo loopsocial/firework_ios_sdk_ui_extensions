@@ -10,7 +10,7 @@ import SwiftUI
 import FireworkVideo
 import FireworkVideoUI
 
-struct SwiftUIListView: View {
+struct SwiftUIListView: View {    
     var body: some View {
         List {
             Spacer()
@@ -22,7 +22,7 @@ struct SwiftUIListView: View {
                     debugPrint("Video feed loaded successfully.")
                 },
                 onVideoFeedFailedToLoad: { error in
-                    debugPrint("Video feed did fail loading")
+                    debugPrint("Video feed did fail loading with error: \(error.localizedDescription)")
                 }
             ).frame(height: 240)
             Spacer()
