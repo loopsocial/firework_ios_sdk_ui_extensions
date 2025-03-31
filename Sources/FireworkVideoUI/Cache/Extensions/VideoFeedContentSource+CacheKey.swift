@@ -31,8 +31,8 @@ extension VideoFeedContentSource {
             result += "hashtagPlaylist_channelID:\(channelID)_filterExpression:\(filterExpression)"
         case .skuPlaylist(channelID: let channelID, productIDs: let productIDs):
             result += "skuPlaylist_channelID:\(channelID)_productIDs:\(productIDs.joined(separator: ","))"
-        case .singleContent(videoOrLiveStreamID: let videoOrLiveStreamID):
-            result += "singleContent_videoOrLiveStreamID:\(videoOrLiveStreamID))"
+        case .singleContent(contentID: let contentID):
+            result += "singleContent_contentID:\(contentID))"
         case .videoAds(adChannelId: let adChannelId, vastXml: let vastXml):
             result += "videoAds_adChannelId:\(adChannelId)_vastXml:\(vastXml)"
         case .unknownContent:
