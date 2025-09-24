@@ -158,11 +158,16 @@ public class AppLanguageManager {
     /// - Returns: The result of changing app language.
     @discardableResult
     public func changeAppLanguage(_ language: String?) -> Bool {
-        guard let language = language, language.count > 0 else {
+        guard var language = language, language.count > 0 else {
             appLanguage = nil
             UserDefaults.standard.removeObject(forKey: appLanguageStorageKey)
             UserDefaults.standard.synchronize()
             return true
+        }
+
+        // Becuase andriod use zh-TW for traditional taiwan language, so we need to do some conversion here.
+        if language == "zh-TW" {
+            language = "zh-Hant-TW"
         }
 
         if LanguageExtension.isValidLanguage(language) {
